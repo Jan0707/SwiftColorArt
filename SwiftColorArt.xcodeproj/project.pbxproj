@@ -14,6 +14,9 @@
 		FE9BF7201A5C75F800065165 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF71F1A5C75F800065165 /* Images.xcassets */; };
 		FE9BF7231A5C75F800065165 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF7211A5C75F800065165 /* LaunchScreen.xib */; };
 		FE9BF72F1A5C75F800065165 /* SwiftColorArtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF72E1A5C75F800065165 /* SwiftColorArtTests.swift */; };
+		FE9BF7391A5C774200065165 /* SwiftColorArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7381A5C774200065165 /* SwiftColorArt.swift */; };
+		FE9BF73C1A5C81E200065165 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF73B1A5C81E200065165 /* Extensions.swift */; };
+		FE9BF73F1A5CA15C00065165 /* centaurea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF73E1A5CA15C00065165 /* centaurea.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		FE9BF7281A5C75F800065165 /* SwiftColorArtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftColorArtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9BF72D1A5C75F800065165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE9BF72E1A5C75F800065165 /* SwiftColorArtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftColorArtTests.swift; sourceTree = "<group>"; };
+		FE9BF7381A5C774200065165 /* SwiftColorArt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftColorArt.swift; path = SwiftColorArt/Classes/SwiftColorArt.swift; sourceTree = "<group>"; };
+		FE9BF73B1A5C81E200065165 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = SwiftColorArt/Classes/Extensions.swift; sourceTree = "<group>"; };
+		FE9BF73E1A5CA15C00065165 /* centaurea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = centaurea.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 		FE9BF7081A5C75F800065165 = {
 			isa = PBXGroup;
 			children = (
+				FE9BF73A1A5C774700065165 /* Classes */,
 				FE9BF7131A5C75F800065165 /* SwiftColorArt */,
 				FE9BF72B1A5C75F800065165 /* SwiftColorArtTests */,
 				FE9BF7121A5C75F800065165 /* Products */,
@@ -79,6 +86,7 @@
 		FE9BF7131A5C75F800065165 /* SwiftColorArt */ = {
 			isa = PBXGroup;
 			children = (
+				FE9BF73D1A5CA13B00065165 /* examples */,
 				FE9BF7161A5C75F800065165 /* AppDelegate.swift */,
 				FE9BF7181A5C75F800065165 /* MasterViewController.swift */,
 				FE9BF71A1A5C75F800065165 /* DetailViewController.swift */,
@@ -113,6 +121,23 @@
 				FE9BF72D1A5C75F800065165 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE9BF73A1A5C774700065165 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FE9BF7381A5C774200065165 /* SwiftColorArt.swift */,
+				FE9BF73B1A5C81E200065165 /* Extensions.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		FE9BF73D1A5CA13B00065165 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				FE9BF73E1A5CA15C00065165 /* centaurea.jpg */,
+			);
+			name = examples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE9BF73F1A5CA15C00065165 /* centaurea.jpg in Resources */,
 				FE9BF71E1A5C75F800065165 /* Main.storyboard in Resources */,
 				FE9BF7231A5C75F800065165 /* LaunchScreen.xib in Resources */,
 				FE9BF7201A5C75F800065165 /* Images.xcassets in Resources */,
@@ -215,7 +241,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE9BF73C1A5C81E200065165 /* Extensions.swift in Sources */,
 				FE9BF71B1A5C75F800065165 /* DetailViewController.swift in Sources */,
+				FE9BF7391A5C774200065165 /* SwiftColorArt.swift in Sources */,
 				FE9BF7191A5C75F800065165 /* MasterViewController.swift in Sources */,
 				FE9BF7171A5C75F800065165 /* AppDelegate.swift in Sources */,
 			);

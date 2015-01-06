@@ -10,21 +10,21 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
 
-
-    var detailItem: AnyObject? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
+    var detailItem:String?
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
+        if let detail: String = self.detailItem {
+            if let imageView = self.imageView {
+                
+                var image:UIImage = UIImage(named: detail)!
+                
+                imageView.image = image
+                
+                var swiftColorArt:SwiftColorArt = SwiftColorArt(inputImage: image)
+                self.view.backgroundColor = swiftColorArt.backgroundColor!
             }
         }
     }
