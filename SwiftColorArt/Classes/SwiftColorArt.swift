@@ -19,9 +19,7 @@ class SwiftColorArt {
     
     convenience init(inputImage:UIImage)
     {
-        var scaledImage:UIImage = UIImage(CGImage: inputImage.CGImage, scale: CGFloat(0.3), orientation: inputImage.imageOrientation)!
-        
-        self.init(inputImage:scaledImage, threshold:2)
+        self.init(inputImage:inputImage, threshold:2)
     }
     
     init(inputImage:UIImage, threshold:NSInteger)
@@ -43,54 +41,60 @@ class SwiftColorArt {
     
     private func analyzeImage(inputImage:UIImage) -> Dictionary<String, UIColor>
     {
-        var imageColors:NSCountedSet = NSCountedSet()
+        var imageColors:Array<PCCountedColor> = Array<PCCountedColor>()
         var backgroundColor:UIColor = self.findEdgeColor(inputImage,colors:&imageColors);
-        var primaryColor:UIColor?
-        var secondaryColor:UIColor?
-        var detailColor:UIColor?
+
+        var primaryColor:UnsafeMutablePointer<UIColor> = nil
+        var secondaryColor:UnsafeMutablePointer<UIColor> = nil
+        var detailColor:UnsafeMutablePointer<UIColor> = nil
         
         var darkBackground:Bool = backgroundColor.pc_isDarkColor()
 
-        //self.findTextColors(imageColors, primaryColor:&primaryColor, secondaryColor:&secondaryColor, detailColor:&detailColor, backgroundColor:&backgroundColor)
-            
+        self.findTextColors(imageColors, primaryColor:&primaryColor, secondaryColor:&secondaryColor, detailColor:&detailColor, backgroundColor:&backgroundColor)
+        
+        var dict:Dictionary = Dictionary<String, UIColor>()
+
+        dict[self.kAnalyzedBackgroundColor] = backgroundColor
+        
         if primaryColor == nil {
             println("missed primary")
             if darkBackground {
-                primaryColor = UIColor.whiteColor()
+                dict[self.kAnalyzedPrimaryColor] = UIColor.whiteColor()
             } else {
-                primaryColor = UIColor.blackColor()
+                dict[self.kAnalyzedPrimaryColor] = UIColor.blackColor()
             }
+        } else {
+            dict[self.kAnalyzedPrimaryColor] = primaryColor.memory
         }
+
         
         if secondaryColor == nil {
             println("missed secondary")
             if darkBackground {
-                secondaryColor = UIColor.whiteColor()
+                dict[self.kAnalyzedSecondaryColor] = UIColor.whiteColor()
             } else {
-                secondaryColor = UIColor.blackColor()
+                dict[self.kAnalyzedSecondaryColor] = UIColor.blackColor()
             }
+        } else {
+            dict[self.kAnalyzedSecondaryColor] = secondaryColor.memory
         }
+
         
         if detailColor == nil {
             println("missed detail")
             if darkBackground {
-                detailColor = UIColor.whiteColor()
+                dict[self.kAnalyzedDetailColor] = UIColor.whiteColor()
             } else {
-                detailColor = UIColor.blackColor()
+                dict[self.kAnalyzedDetailColor] = UIColor.blackColor()
             }
+        } else {
+            dict[self.kAnalyzedDetailColor] = detailColor.memory
         }
-
-        var dict:Dictionary = Dictionary<String, UIColor>()
-        
-        dict[self.kAnalyzedBackgroundColor] = backgroundColor
-        dict[self.kAnalyzedPrimaryColor]    = primaryColor
-        dict[self.kAnalyzedSecondaryColor]  = secondaryColor
-        dict[self.kAnalyzedDetailColor]     = detailColor
         
         return dict
     }
     
-    private func findEdgeColor(inputImage:UIImage, inout colors:NSCountedSet) -> UIColor
+    private func findEdgeColor(inputImage:UIImage, inout colors:Array<PCCountedColor>) -> UIColor
     {
         
         var imageRep:CGImageRef = image.CGImage;
@@ -130,7 +134,19 @@ class SwiftColorArt {
             }
         }
         
-        colors = imageColors
+        var imageEnumerator:NSEnumerator = imageColors.objectEnumerator()
+        
+        while let curColor = imageEnumerator.nextObject() as? UIColor
+        {
+            var colorCount:Int = edgeColors.countForObject(curColor)
+            
+            if colorCount <= self.randomColorThreshold {
+                continue
+            }
+            
+            var container:PCCountedColor = PCCountedColor(color:curColor, count: colorCount)
+            colors.append(container)
+        }
         
         var enumerator:NSEnumerator = edgeColors.objectEnumerator()
         
@@ -159,7 +175,7 @@ class SwiftColorArt {
             
             if proposedEdgeColor!.color.pc_isBlackOrWhite() {
                 
-                for i in 1...sortedColors.count {
+                for i in 0...sortedColors.count - 1 {
                     var nextProposedColor:PCCountedColor = sortedColors.objectAtIndex(i) as PCCountedColor
                     
                     if Double( nextProposedColor.count / proposedEdgeColor!.count) > 0.4 {  // make sure the second choice color is 40% as common as the first choice
@@ -183,17 +199,17 @@ class SwiftColorArt {
         return proposedEdgeColor!.color;
     }
     
-    private func findTextColors(imageColors:NSCountedSet, inout primaryColor:UIColor?, inout secondaryColor:UIColor?, inout detailColor:UIColor?, inout backgroundColor:UIColor?)
+    private func findTextColors(imageColors:Array<PCCountedColor>, inout primaryColor:UnsafeMutablePointer<UIColor>, inout secondaryColor:UnsafeMutablePointer<UIColor>, inout detailColor:UnsafeMutablePointer<UIColor>, inout backgroundColor:UIColor)
     {
         var curColor:UIColor
         
         var sortedColors:NSMutableArray = NSMutableArray(capacity: imageColors.count)
-        var findDarkTextColor:Bool = backgroundColor!.pc_isDarkColor()
+        var findDarkTextColor:Bool = backgroundColor.pc_isDarkColor()
         
         //for countedColor: PCCountedColor in imageColors as [PCCountedColor] {
         for index in 0...imageColors.count-1 {
             
-            var countedColor:PCCountedColor = imageColors.valueForKey(String(index)) as PCCountedColor
+            var countedColor:PCCountedColor = imageColors[index]
             
             var curColor:UIColor = countedColor.color.pc_colorWithMinimumSaturation(0.15)
             
@@ -214,25 +230,25 @@ class SwiftColorArt {
         //for curContainer: PCCountedColor in sortedColors as [PCCountedColor] {
         for index in 0...sortedColors.count-1 {
             
-            var curContainer:PCCountedColor = sortedColors.valueForKey(String(index)) as PCCountedColor
+            var curContainer:PCCountedColor = sortedColors[index] as PCCountedColor
 
             curColor = curContainer.color;
             
             if primaryColor == nil {
-                if curColor.pc_isContrastingColor(backgroundColor!) {
+                if curColor.pc_isContrastingColor(backgroundColor) {
                     var primaryColor:UIColor = curColor;
                 }
             } else if secondaryColor == nil {
-                if primaryColor!.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor!) {
+                if primaryColor.memory.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor) {
                     continue;
                 }
-                secondaryColor = curColor;
+                secondaryColor.memory = curColor;
             } else if detailColor == nil {
-                if secondaryColor!.pc_isDistinct(curColor) || primaryColor!.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor!) {
+                if secondaryColor.memory.pc_isDistinct(curColor) || primaryColor.memory.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor) {
                     continue;
                 }
                 
-                detailColor = curColor;
+                detailColor.memory = curColor;
                 break;
             }
         }
