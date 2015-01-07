@@ -12,6 +12,11 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
 
+    @IBOutlet weak var backgroundColorLabel: UILabel!
+    @IBOutlet weak var primaryColorLabel: UILabel!
+    @IBOutlet weak var secondaryColorLabel: UILabel!
+    @IBOutlet weak var detailColorLabel: UILabel!
+    
     var detailItem:String?
 
     func configureView() {
@@ -24,7 +29,11 @@ class DetailViewController: UIViewController {
                 imageView.image = image
                 
                 var swiftColorArt:SwiftColorArt = SwiftColorArt(inputImage: image)
-                self.view.backgroundColor = swiftColorArt.backgroundColor!
+                
+                self.backgroundColorLabel.textColor = swiftColorArt.backgroundColor!
+                self.primaryColorLabel.textColor    = swiftColorArt.primaryColor!
+                self.secondaryColorLabel.textColor  = swiftColorArt.secondaryColor!
+                self.detailColorLabel.textColor     = swiftColorArt.detailColor!
             }
         }
     }

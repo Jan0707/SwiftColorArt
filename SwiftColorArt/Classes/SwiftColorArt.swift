@@ -19,7 +19,9 @@ class SwiftColorArt {
     
     convenience init(inputImage:UIImage)
     {
-        self.init(inputImage:inputImage, threshold:2)
+        var scaledImage:UIImage = UIImage(CGImage: inputImage.CGImage, scale: CGFloat(0.3), orientation: inputImage.imageOrientation)!
+        
+        self.init(inputImage:scaledImage, threshold:2)
     }
     
     init(inputImage:UIImage, threshold:NSInteger)
@@ -42,20 +44,14 @@ class SwiftColorArt {
     private func analyzeImage(inputImage:UIImage) -> Dictionary<String, UIColor>
     {
         var imageColors:NSCountedSet = NSCountedSet()
-        var backgroundColor:UIColor = self.findEdgeColor(inputImage,imageColors:&imageColors);
+        var backgroundColor:UIColor = self.findEdgeColor(inputImage,colors:&imageColors);
         var primaryColor:UIColor?
         var secondaryColor:UIColor?
         var detailColor:UIColor?
         
-        // If the random color threshold is too high and the image size too small,
-        // we could miss detecting the background color and crash.
-        /*if backgroundColor == nil {
-            backgroundColor = UIColor.whiteColor()
-        }*/
-        
         var darkBackground:Bool = backgroundColor.pc_isDarkColor()
-            
-        self.findTextColors(imageColors, primaryColor:&primaryColor!, secondaryColor:&secondaryColor!, detailColor:&detailColor!, backgroundColor:&backgroundColor)
+
+        //self.findTextColors(imageColors, primaryColor:&primaryColor, secondaryColor:&secondaryColor, detailColor:&detailColor, backgroundColor:&backgroundColor)
             
         if primaryColor == nil {
             println("missed primary")
@@ -83,7 +79,7 @@ class SwiftColorArt {
                 detailColor = UIColor.blackColor()
             }
         }
-        
+
         var dict:Dictionary = Dictionary<String, UIColor>()
         
         dict[self.kAnalyzedBackgroundColor] = backgroundColor
@@ -94,7 +90,7 @@ class SwiftColorArt {
         return dict
     }
     
-    private func findEdgeColor(inputImage:UIImage, inout imageColors:NSCountedSet) -> UIColor
+    private func findEdgeColor(inputImage:UIImage, inout colors:NSCountedSet) -> UIColor
     {
         
         var imageRep:CGImageRef = image.CGImage;
@@ -102,26 +98,27 @@ class SwiftColorArt {
         var width:UInt  = CGImageGetWidth(imageRep)
         var height:UInt = CGImageGetHeight(imageRep)
         
-        var cs:CGColorSpaceRef     = CGColorSpaceCreateDeviceRGB();
-        var bmContext:CGContextRef = CGBitmapContextCreate(nil, width, height, 8, 4 * width, cs, CGBitmapInfo.ByteOrderDefault ); //CGImageAlphaInfo.NoneSkipLast
-        var rect:CGRect            = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(width), height: CGFloat(height))
+        var cs:CGColorSpaceRef = CGColorSpaceCreateDeviceRGB();
+        var context:CGContext  = self.createBitmapContext(image.CGImage)
+        var rect:CGRect        = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(width), height: CGFloat(height))
         
-        CGContextDrawImage(bmContext, rect, image.CGImage);
+        CGContextDrawImage(context, rect, image.CGImage);
 
         var imageColors:NSCountedSet = NSCountedSet(capacity: Int(width * height))
         var edgeColors:NSCountedSet  = NSCountedSet(capacity: Int(height))
 
-        let pixels:[RGBAPixel] = CGBitmapContextGetData(bmContext) as [RGBAPixel]
+        var data     = CGBitmapContextGetData(context)
+        var dataType = UnsafeMutablePointer<UInt8>(data)
+        
         
         for y in 0...height-1 {
             for x in 0...width-1 {
-                let index:Int = Int(x + y * width)
-                var pixel:RGBAPixel = pixels[index]
+                let offset:Int = Int(x + y * width)
                 
-                var red:CGFloat = CGFloat(pixel.red / 255)
-                var green:CGFloat = CGFloat(pixel.green / 255)
-                var blue:CGFloat = CGFloat(pixel.blue / 255)
-                var alpha:CGFloat = CGFloat(pixel.alpha / 255)
+                let alpha = CGFloat(dataType[offset])
+                let red   = CGFloat(dataType[offset+1])
+                let green = CGFloat(dataType[offset+2])
+                let blue  = CGFloat(dataType[offset+3])
                 
                 var color:UIColor = UIColor(red: red, green: green, blue: blue, alpha: alpha)
                 
@@ -133,11 +130,9 @@ class SwiftColorArt {
             }
         }
         
-        var colors = imageColors;
+        colors = imageColors
         
         var enumerator:NSEnumerator = edgeColors.objectEnumerator()
-
-        var curColor:UIColor?
         
         var sortedColors:NSMutableArray = []
         
@@ -153,7 +148,8 @@ class SwiftColorArt {
             sortedColors.addObject(container)
         }
         
-        sortedColors.sortedArrayUsingSelector("compare")
+        // TODO: Use swifts sorting capabilities for this...
+        sortedColors.sortedArrayUsingSelector(Selector("compare:"))
         
         var proposedEdgeColor:PCCountedColor?
         
@@ -180,9 +176,84 @@ class SwiftColorArt {
             }
         }
         
+        if proposedEdgeColor == nil {
+            return UIColor.whiteColor()
+        }
+        
         return proposedEdgeColor!.color;
     }
     
-    private func findTextColors(imageColors:NSCountedSet, inout primaryColor:UIColor, inout secondaryColor:UIColor, inout detailColor:UIColor, inout backgroundColor:UIColor)
-    {}
+    private func findTextColors(imageColors:NSCountedSet, inout primaryColor:UIColor?, inout secondaryColor:UIColor?, inout detailColor:UIColor?, inout backgroundColor:UIColor?)
+    {
+        var curColor:UIColor
+        
+        var sortedColors:NSMutableArray = NSMutableArray(capacity: imageColors.count)
+        var findDarkTextColor:Bool = backgroundColor!.pc_isDarkColor()
+        
+        //for countedColor: PCCountedColor in imageColors as [PCCountedColor] {
+        for index in 0...imageColors.count-1 {
+            
+            var countedColor:PCCountedColor = imageColors.valueForKey(String(index)) as PCCountedColor
+            
+            var curColor:UIColor = countedColor.color.pc_colorWithMinimumSaturation(0.15)
+            
+            if curColor.pc_isDarkColor() == findDarkTextColor {
+                var colorCount:Int = countedColor.count;
+                
+                //if ( colorCount <= 2 ) // prevent using random colors, threshold should be based on input image size
+                //	continue;
+                
+                var container:PCCountedColor = PCCountedColor(color: curColor, count: colorCount)
+                
+                sortedColors.addObject(container)
+            }
+        }
+        
+        sortedColors.sortedArrayUsingSelector(Selector("compare:"))
+        
+        //for curContainer: PCCountedColor in sortedColors as [PCCountedColor] {
+        for index in 0...sortedColors.count-1 {
+            
+            var curContainer:PCCountedColor = sortedColors.valueForKey(String(index)) as PCCountedColor
+
+            curColor = curContainer.color;
+            
+            if primaryColor == nil {
+                if curColor.pc_isContrastingColor(backgroundColor!) {
+                    var primaryColor:UIColor = curColor;
+                }
+            } else if secondaryColor == nil {
+                if primaryColor!.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor!) {
+                    continue;
+                }
+                secondaryColor = curColor;
+            } else if detailColor == nil {
+                if secondaryColor!.pc_isDistinct(curColor) || primaryColor!.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor!) {
+                    continue;
+                }
+                
+                detailColor = curColor;
+                break;
+            }
+        }
+    }
+    
+    // MARK: Custom
+    
+    private func createBitmapContext(inImage: CGImageRef) -> CGContext
+    {
+        let pixelsWide = CGImageGetWidth(inImage)
+        let pixelsHigh = CGImageGetHeight(inImage)
+
+        let bitmapBytesPerRow = Int(pixelsWide) * 4
+        let bitmapByteCount = bitmapBytesPerRow * Int(pixelsHigh)
+
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+
+        let bitmapData = malloc(CUnsignedLong(bitmapByteCount))
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedFirst.rawValue)
+
+        let context = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, CUnsignedLong(8), CUnsignedLong(bitmapBytesPerRow), colorSpace, bitmapInfo)
+        return context
+    }
 }

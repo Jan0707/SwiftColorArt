@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A24384A1-D9BB-4C71-BA92-C00A71076373</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SwiftColorArt</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E3324B80A59CD324950190EF07D26CEEF0223D86</key>
+		<string>https://github.com/Jan0707/SwiftColorArt.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SwiftColorArt.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E3324B80A59CD324950190EF07D26CEEF0223D86</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Jan0707/SwiftColorArt.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E3324B80A59CD324950190EF07D26CEEF0223D86</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E3324B80A59CD324950190EF07D26CEEF0223D86</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwiftColorArt</string>
+		</dict>
+	</array>
+</dict>
+</plist>
