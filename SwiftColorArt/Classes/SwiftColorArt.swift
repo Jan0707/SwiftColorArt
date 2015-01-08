@@ -25,7 +25,7 @@ class SwiftColorArt {
     init(inputImage:UIImage, threshold:NSInteger)
     {
         self.randomColorThreshold = threshold
-        self.image = inputImage
+        self.image = UIImage(CGImage: inputImage.CGImage, scale: CGFloat(0.1), orientation: inputImage.imageOrientation)!
         self.processImage()
     }
     
@@ -44,9 +44,9 @@ class SwiftColorArt {
         var imageColors:Array<PCCountedColor> = Array<PCCountedColor>()
         var backgroundColor:UIColor = self.findEdgeColor(inputImage,colors:&imageColors);
 
-        var primaryColor:UnsafeMutablePointer<UIColor> = nil
+        var primaryColor:UnsafeMutablePointer<UIColor>   = nil
         var secondaryColor:UnsafeMutablePointer<UIColor> = nil
-        var detailColor:UnsafeMutablePointer<UIColor> = nil
+        var detailColor:UnsafeMutablePointer<UIColor>    = nil
         
         var darkBackground:Bool = backgroundColor.pc_isDarkColor()
 
@@ -64,6 +64,7 @@ class SwiftColorArt {
                 dict[self.kAnalyzedPrimaryColor] = UIColor.blackColor()
             }
         } else {
+            println("Preparing to return primary color \(primaryColor.memory.description)")
             dict[self.kAnalyzedPrimaryColor] = primaryColor.memory
         }
 
@@ -117,12 +118,17 @@ class SwiftColorArt {
         
         for y in 0...height-1 {
             for x in 0...width-1 {
-                let offset:Int = Int(x + y * width)
+                let offset:Int = Int(4 * (x + y * width))
                 
-                let alpha = CGFloat(dataType[offset])
-                let red   = CGFloat(dataType[offset+1])
-                let green = CGFloat(dataType[offset+2])
-                let blue  = CGFloat(dataType[offset+3])
+                var alpha = CGFloat(dataType[offset])
+                var red   = CGFloat(dataType[offset+1])
+                var green = CGFloat(dataType[offset+2])
+                var blue  = CGFloat(dataType[offset+3])
+                
+                alpha = alpha / 255.0
+                red   = red / 255.0
+                green = green / 255.0
+                blue  = blue / 255.0
                 
                 var color:UIColor = UIColor(red: red, green: green, blue: blue, alpha: alpha)
                 
@@ -165,21 +171,21 @@ class SwiftColorArt {
         }
         
         // TODO: Use swifts sorting capabilities for this...
-        sortedColors.sortedArrayUsingSelector(Selector("compare:"))
+        var finalColors:Array = sortedColors.sortedArrayUsingSelector(Selector("compare:"))
         
         var proposedEdgeColor:PCCountedColor?
         
-        if sortedColors.count > 0 {
+        if finalColors.count > 0 {
             
-            proposedEdgeColor = sortedColors.objectAtIndex(0) as? PCCountedColor
+            proposedEdgeColor = finalColors[0] as? PCCountedColor
             
             if proposedEdgeColor!.color.pc_isBlackOrWhite() {
-                
-                for i in 0...sortedColors.count - 1 {
-                    var nextProposedColor:PCCountedColor = sortedColors.objectAtIndex(i) as PCCountedColor
+    
+                for i in 1...finalColors.count - 1 {
+                    var nextProposedColor:PCCountedColor = finalColors[i] as PCCountedColor
                     
                     if Double( nextProposedColor.count / proposedEdgeColor!.count) > 0.4 {  // make sure the second choice color is 40% as common as the first choice
-
+                        
                         if nextProposedColor.color.pc_isBlackOrWhite() {
                             proposedEdgeColor = nextProposedColor;
                             break;
@@ -204,7 +210,7 @@ class SwiftColorArt {
         var curColor:UIColor
         
         var sortedColors:NSMutableArray = NSMutableArray(capacity: imageColors.count)
-        var findDarkTextColor:Bool = backgroundColor.pc_isDarkColor()
+        var findDarkTextColor:Bool = !backgroundColor.pc_isDarkColor()
         
         //for countedColor: PCCountedColor in imageColors as [PCCountedColor] {
         for index in 0...imageColors.count-1 {
@@ -225,31 +231,45 @@ class SwiftColorArt {
             }
         }
         
-        sortedColors.sortedArrayUsingSelector(Selector("compare:"))
+        var finalSortedColors:Array = sortedColors.sortedArrayUsingSelector(Selector("compare:"))
         
-        //for curContainer: PCCountedColor in sortedColors as [PCCountedColor] {
-        for index in 0...sortedColors.count-1 {
-            
-            var curContainer:PCCountedColor = sortedColors[index] as PCCountedColor
-
-            curColor = curContainer.color;
-            
-            if primaryColor == nil {
-                if curColor.pc_isContrastingColor(backgroundColor) {
-                    var primaryColor:UIColor = curColor;
-                }
-            } else if secondaryColor == nil {
-                if primaryColor.memory.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor) {
-                    continue;
-                }
-                secondaryColor.memory = curColor;
-            } else if detailColor == nil {
-                if secondaryColor.memory.pc_isDistinct(curColor) || primaryColor.memory.pc_isDistinct(curColor) || curColor.pc_isContrastingColor(backgroundColor) {
-                    continue;
-                }
+        if finalSortedColors.count > 0 {
+            //for curContainer: PCCountedColor in sortedColors as [PCCountedColor] {
+            for index in 0...finalSortedColors.count-1 {
                 
-                detailColor.memory = curColor;
-                break;
+                var curContainer:PCCountedColor = finalSortedColors[index] as PCCountedColor
+                
+                println("Checking Color (\(curContainer.color.description)) with count \(curContainer.count)")
+                println(primaryColor)
+                
+                curColor = curContainer.color;
+                
+                if primaryColor == nil {
+                    println("No primary color yet")
+                    if curColor.pc_isContrastingColor(backgroundColor) {
+                        println("Current color is contrasting to background color")
+                        primaryColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
+                        primaryColor.memory = curColor;
+                        println("Set primary color to \(curColor)")
+                    }
+                } else if secondaryColor == nil {
+                    println("No secondary color yet")
+                    if !primaryColor.memory.pc_isDistinct(curColor) || !curColor.pc_isContrastingColor(backgroundColor) {
+                        continue;
+                    }
+                    secondaryColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
+                    secondaryColor.memory = curColor;
+                    println("Set secondary color to \(curColor)")
+                } else if detailColor == nil {
+                    println("No detail color yet")
+                    if !secondaryColor.memory.pc_isDistinct(curColor) || !primaryColor.memory.pc_isDistinct(curColor) || !curColor.pc_isContrastingColor(backgroundColor) {
+                        continue;
+                    }
+                    detailColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
+                    detailColor.memory = curColor;
+                    println("Set detail color to \(curColor)")
+                    break;
+                }
             }
         }
     }

@@ -33,11 +33,10 @@ extension UIColor {
         
         tempColor.getRed(&r, green: &g, blue: &b, alpha: &a)
 
-       
         if (r > 0.91 && g > 0.91 && b > 0.91) {
             return true
         }
-        
+
         if (r < 0.09 && g < 0.09 && b < 0.09) {
             return true
         }
@@ -91,8 +90,7 @@ extension UIColor {
             contrast = (fLum + 0.05) / (bLum + 0.05);
         }
         
-        //return contrast > 3.0; //3-4.5
-        return contrast > 1.6;
+        return contrast > 1.6
     }
     
     func pc_isDistinct(compareColor:UIColor) -> Bool
@@ -113,7 +111,7 @@ extension UIColor {
         convertedColor.getRed(&r, green: &g, blue: &b, alpha: &a)
         convertedCompareColor.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
         
-        var threshold:CGFloat = CGFloat(0.25) //.15
+        var threshold:CGFloat = CGFloat(0.15)
     
         if fabs(r - r1) > threshold || fabs(g - g1) > threshold || fabs(b - b1) > threshold || fabs(a - a1) > threshold {
             // check for grays, prevent multiple gray colors

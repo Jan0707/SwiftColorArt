@@ -19,8 +19,12 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        var red = UIColor.redColor()
+        var green = UIColor.greenColor()
+        
         self.objects.append("centaurea.jpg")
+        self.objects.append("SiPanDonLaos.jpg")
     }
 
     override func didReceiveMemoryWarning() {

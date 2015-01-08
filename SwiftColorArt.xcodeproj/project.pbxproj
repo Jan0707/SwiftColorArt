@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE532FC21A5F348B0050151F /* SiPanDonLaos.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE532FC11A5F348B0050151F /* SiPanDonLaos.jpg */; };
 		FE9BF7171A5C75F800065165 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7161A5C75F800065165 /* AppDelegate.swift */; };
 		FE9BF7191A5C75F800065165 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7181A5C75F800065165 /* MasterViewController.swift */; };
 		FE9BF71B1A5C75F800065165 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF71A1A5C75F800065165 /* DetailViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE532FC11A5F348B0050151F /* SiPanDonLaos.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SiPanDonLaos.jpg; sourceTree = "<group>"; };
 		FE9BF7111A5C75F800065165 /* SwiftColorArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftColorArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9BF7151A5C75F800065165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE9BF7161A5C75F800065165 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		FE9BF73D1A5CA13B00065165 /* examples */ = {
 			isa = PBXGroup;
 			children = (
+				FE532FC11A5F348B0050151F /* SiPanDonLaos.jpg */,
 				FE9BF73E1A5CA15C00065165 /* centaurea.jpg */,
 			);
 			name = examples;
@@ -222,6 +225,7 @@
 			files = (
 				FE9BF73F1A5CA15C00065165 /* centaurea.jpg in Resources */,
 				FE9BF71E1A5C75F800065165 /* Main.storyboard in Resources */,
+				FE532FC21A5F348B0050151F /* SiPanDonLaos.jpg in Resources */,
 				FE9BF7231A5C75F800065165 /* LaunchScreen.xib in Resources */,
 				FE9BF7201A5C75F800065165 /* Images.xcassets in Resources */,
 			);
@@ -437,6 +441,7 @@
 				FE9BF7341A5C75F800065165 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE9BF7351A5C75F800065165 /* Build configuration list for PBXNativeTarget "SwiftColorArtTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +450,7 @@
 				FE9BF7371A5C75F800065165 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

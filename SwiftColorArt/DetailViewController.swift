@@ -30,10 +30,19 @@ class DetailViewController: UIViewController {
                 
                 var swiftColorArt:SwiftColorArt = SwiftColorArt(inputImage: image)
                 
+                println("Read primary color \(swiftColorArt.primaryColor?.description)")
+                
                 self.backgroundColorLabel.textColor = swiftColorArt.backgroundColor!
+                self.backgroundColorLabel.text      = "Found Background Color"
+                
                 self.primaryColorLabel.textColor    = swiftColorArt.primaryColor!
+                self.primaryColorLabel.text         = "Found Primary Color"
+
                 self.secondaryColorLabel.textColor  = swiftColorArt.secondaryColor!
+                self.secondaryColorLabel.text       = "Found Secondary Color"
+                
                 self.detailColorLabel.textColor     = swiftColorArt.detailColor!
+                self.detailColorLabel.text          = "Found Detail Color"
             }
         }
     }
