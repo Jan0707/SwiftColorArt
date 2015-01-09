@@ -25,7 +25,12 @@ class SwiftColorArt {
     init(inputImage:UIImage, threshold:NSInteger)
     {
         self.randomColorThreshold = threshold
-        self.image = UIImage(CGImage: inputImage.CGImage, scale: CGFloat(0.1), orientation: inputImage.imageOrientation)!
+        
+        let targetSize:CGSize = CGSize(width: 128, height: 128)
+        let scaledImage:UIImage = SwiftColorArt.resizeImage(inputImage, targetSize: targetSize)
+        
+        self.image = scaledImage
+        
         self.processImage()
     }
     
@@ -64,7 +69,6 @@ class SwiftColorArt {
                 dict[self.kAnalyzedPrimaryColor] = UIColor.blackColor()
             }
         } else {
-            println("Preparing to return primary color \(primaryColor.memory.description)")
             dict[self.kAnalyzedPrimaryColor] = primaryColor.memory
         }
 
@@ -212,22 +216,24 @@ class SwiftColorArt {
         var sortedColors:NSMutableArray = NSMutableArray(capacity: imageColors.count)
         var findDarkTextColor:Bool = !backgroundColor.pc_isDarkColor()
         
-        //for countedColor: PCCountedColor in imageColors as [PCCountedColor] {
-        for index in 0...imageColors.count-1 {
-            
-            var countedColor:PCCountedColor = imageColors[index]
-            
-            var curColor:UIColor = countedColor.color.pc_colorWithMinimumSaturation(0.15)
-            
-            if curColor.pc_isDarkColor() == findDarkTextColor {
-                var colorCount:Int = countedColor.count;
+        if (imageColors.count > 0) {
+            //for countedColor: PCCountedColor in imageColors as [PCCountedColor] {
+            for index in 0...imageColors.count-1 {
                 
-                //if ( colorCount <= 2 ) // prevent using random colors, threshold should be based on input image size
-                //	continue;
+                var countedColor:PCCountedColor = imageColors[index]
                 
-                var container:PCCountedColor = PCCountedColor(color: curColor, count: colorCount)
+                var curColor:UIColor = countedColor.color.pc_colorWithMinimumSaturation(0.15)
                 
-                sortedColors.addObject(container)
+                if curColor.pc_isDarkColor() == findDarkTextColor {
+                    var colorCount:Int = countedColor.count;
+                    
+                    //if ( colorCount <= 2 ) // prevent using random colors, threshold should be based on input image size
+                    //	continue;
+                    
+                    var container:PCCountedColor = PCCountedColor(color: curColor, count: colorCount)
+                    
+                    sortedColors.addObject(container)
+                }
             }
         }
         
@@ -291,5 +297,29 @@ class SwiftColorArt {
 
         let context = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, CUnsignedLong(8), CUnsignedLong(bitmapBytesPerRow), colorSpace, bitmapInfo)
         return context
+    }
+    
+    class func resizeImage(image:UIImage, targetSize: CGSize) -> UIImage {
+        
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        } else {
+            newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        }
+        
+        let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }
