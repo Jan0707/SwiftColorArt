@@ -19,14 +19,14 @@ class SwiftColorArt {
     
     convenience init(inputImage:UIImage)
     {
-        self.init(inputImage:inputImage, threshold:2)
+        self.init(inputImage:inputImage, threshold:0)
     }
     
     init(inputImage:UIImage, threshold:NSInteger)
     {
         self.randomColorThreshold = threshold
         
-        let targetSize:CGSize = CGSize(width: 128, height: 128)
+        let targetSize:CGSize = CGSize(width: 64, height: 64)
         let scaledImage:UIImage = SwiftColorArt.resizeImage(inputImage, targetSize: targetSize)
         
         self.image = scaledImage
@@ -48,7 +48,7 @@ class SwiftColorArt {
     {
         var imageColors:Array<PCCountedColor> = Array<PCCountedColor>()
         var backgroundColor:UIColor = self.findEdgeColor(inputImage,colors:&imageColors);
-
+        
         var primaryColor:UnsafeMutablePointer<UIColor>   = nil
         var secondaryColor:UnsafeMutablePointer<UIColor> = nil
         var detailColor:UnsafeMutablePointer<UIColor>    = nil
@@ -62,7 +62,6 @@ class SwiftColorArt {
         dict[self.kAnalyzedBackgroundColor] = backgroundColor
         
         if primaryColor == nil {
-            println("missed primary")
             if darkBackground {
                 dict[self.kAnalyzedPrimaryColor] = UIColor.whiteColor()
             } else {
@@ -74,7 +73,6 @@ class SwiftColorArt {
 
         
         if secondaryColor == nil {
-            println("missed secondary")
             if darkBackground {
                 dict[self.kAnalyzedSecondaryColor] = UIColor.whiteColor()
             } else {
@@ -86,7 +84,6 @@ class SwiftColorArt {
 
         
         if detailColor == nil {
-            println("missed detail")
             if darkBackground {
                 dict[self.kAnalyzedDetailColor] = UIColor.whiteColor()
             } else {
@@ -101,7 +98,6 @@ class SwiftColorArt {
     
     private func findEdgeColor(inputImage:UIImage, inout colors:Array<PCCountedColor>) -> UIColor
     {
-        
         var imageRep:CGImageRef = image.CGImage;
         
         var width:UInt  = CGImageGetWidth(imageRep)
@@ -118,7 +114,6 @@ class SwiftColorArt {
 
         var data     = CGBitmapContextGetData(context)
         var dataType = UnsafeMutablePointer<UInt8>(data)
-        
         
         for y in 0...height-1 {
             for x in 0...width-1 {
@@ -150,12 +145,10 @@ class SwiftColorArt {
         {
             var colorCount:Int = edgeColors.countForObject(curColor)
             
-            if colorCount <= self.randomColorThreshold {
-                continue
+            if colorCount >= self.randomColorThreshold {
+                var container:PCCountedColor = PCCountedColor(color:curColor, count: colorCount)
+                colors.append(container)
             }
-            
-            var container:PCCountedColor = PCCountedColor(color:curColor, count: colorCount)
-            colors.append(container)
         }
         
         var enumerator:NSEnumerator = edgeColors.objectEnumerator()
@@ -217,7 +210,6 @@ class SwiftColorArt {
         var findDarkTextColor:Bool = !backgroundColor.pc_isDarkColor()
         
         if (imageColors.count > 0) {
-            //for countedColor: PCCountedColor in imageColors as [PCCountedColor] {
             for index in 0...imageColors.count-1 {
                 
                 var countedColor:PCCountedColor = imageColors[index]
@@ -240,40 +232,29 @@ class SwiftColorArt {
         var finalSortedColors:Array = sortedColors.sortedArrayUsingSelector(Selector("compare:"))
         
         if finalSortedColors.count > 0 {
-            //for curContainer: PCCountedColor in sortedColors as [PCCountedColor] {
             for index in 0...finalSortedColors.count-1 {
                 
                 var curContainer:PCCountedColor = finalSortedColors[index] as PCCountedColor
                 
-                println("Checking Color (\(curContainer.color.description)) with count \(curContainer.count)")
-                println(primaryColor)
-                
                 curColor = curContainer.color;
                 
                 if primaryColor == nil {
-                    println("No primary color yet")
                     if curColor.pc_isContrastingColor(backgroundColor) {
-                        println("Current color is contrasting to background color")
                         primaryColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
                         primaryColor.memory = curColor;
-                        println("Set primary color to \(curColor)")
                     }
                 } else if secondaryColor == nil {
-                    println("No secondary color yet")
                     if !primaryColor.memory.pc_isDistinct(curColor) || !curColor.pc_isContrastingColor(backgroundColor) {
                         continue;
                     }
                     secondaryColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
                     secondaryColor.memory = curColor;
-                    println("Set secondary color to \(curColor)")
                 } else if detailColor == nil {
-                    println("No detail color yet")
                     if !secondaryColor.memory.pc_isDistinct(curColor) || !primaryColor.memory.pc_isDistinct(curColor) || !curColor.pc_isContrastingColor(backgroundColor) {
                         continue;
                     }
                     detailColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
                     detailColor.memory = curColor;
-                    println("Set detail color to \(curColor)")
                     break;
                 }
             }

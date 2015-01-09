@@ -12,15 +12,9 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
 
-    @IBOutlet weak var backgroundColorLabel: UILabel!
     @IBOutlet weak var primaryColorLabel: UILabel!
     @IBOutlet weak var secondaryColorLabel: UILabel!
     @IBOutlet weak var detailColorLabel: UILabel!
-    
-    @IBOutlet weak var backgroundColorDescriptionLabel: UILabel!
-    @IBOutlet weak var primaryColorDescriptionLabel: UILabel!
-    @IBOutlet weak var secondaryColorDescriptionLabel: UILabel!
-    @IBOutlet weak var detailColorDescriptionLabel: UILabel!
     
     var detailItem:String?
 
@@ -35,15 +29,11 @@ class DetailViewController: UIViewController {
                 
                 var swiftColorArt:SwiftColorArt = SwiftColorArt(inputImage: image)
                 
-                self.backgroundColorLabel.textColor = swiftColorArt.backgroundColor!
+                self.view.backgroundColor = swiftColorArt.backgroundColor!
+                
                 self.primaryColorLabel.textColor    = swiftColorArt.primaryColor!
                 self.secondaryColorLabel.textColor  = swiftColorArt.secondaryColor!
                 self.detailColorLabel.textColor     = swiftColorArt.detailColor!
-                
-                self.backgroundColorDescriptionLabel.text = swiftColorArt.backgroundColor!.description
-                self.primaryColorDescriptionLabel.text    = swiftColorArt.primaryColor!.description
-                self.secondaryColorDescriptionLabel.text  = swiftColorArt.secondaryColor!.description
-                self.detailColorDescriptionLabel.text     = swiftColorArt.detailColor!.description
             }
         }
     }
