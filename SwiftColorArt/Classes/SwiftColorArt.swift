@@ -16,22 +16,21 @@ class SwiftColorArt {
   var secondaryColor: UIColor?
   var detailColor: UIColor?
   
-  let kAnalyzedBackgroundColor: String = "kAnalyzedBackgroundColor"
-  let kAnalyzedPrimaryColor: String    = "kAnalyzedPrimaryColor"
-  let kAnalyzedSecondaryColor: String  = "kAnalyzedSecondaryColor"
-  let kAnalyzedDetailColor: String     = "kAnalyzedDetailColor"
+  let analyzedBackgroundColor: String = "analyzedBackgroundColor"
+  let analyzedPrimaryColor: String    = "analyzedPrimaryColor"
+  let analyzedSecondaryColor: String  = "analyzedSecondaryColor"
+  let analyzedDetailColor: String     = "analyzedDetailColor"
   
   convenience init(inputImage: UIImage) {
-    self.init(inputImage: inputImage, minimunColorCount: 0)
+    let sampleSize: CGSize = CGSize(width: 64, height: 64)
+
+    self.init(inputImage: inputImage, imageSampleSize: sampleSize, minimunColorCount: 0)
   }
   
-  init(inputImage: UIImage, minimunColorCount: Int) {
+  init(inputImage: UIImage, imageSampleSize: CGSize, minimunColorCount: Int) {
     self.minimunColorCount = minimunColorCount
     
-    let targetSize:CGSize   = CGSize(width: 64, height: 64)
-    let scaledImage:UIImage = SwiftColorArt.resizeImage(inputImage, targetSize: targetSize)
-    
-    self.image = scaledImage
+    self.image = SwiftColorArt.resizeImage(inputImage, targetSize: imageSampleSize)
     
     self.processImage()
   }
@@ -39,10 +38,10 @@ class SwiftColorArt {
   private func processImage() {
     var colors: [String: UIColor] = self.analyzeImage(self.image)
     
-    self.backgroundColor = colors[self.kAnalyzedBackgroundColor]!
-    self.primaryColor    = colors[self.kAnalyzedPrimaryColor]!
-    self.secondaryColor  = colors[self.kAnalyzedSecondaryColor]!
-    self.detailColor     = colors[self.kAnalyzedDetailColor]!
+    self.backgroundColor = colors[self.analyzedBackgroundColor]!
+    self.primaryColor    = colors[self.analyzedPrimaryColor]!
+    self.secondaryColor  = colors[self.analyzedSecondaryColor]!
+    self.detailColor     = colors[self.analyzedDetailColor]!
   }
   
   private func analyzeImage(inputImage: UIImage) -> [String: UIColor] {
@@ -59,38 +58,38 @@ class SwiftColorArt {
     
     var dict: Dictionary = Dictionary<String, UIColor>()
 
-    dict[self.kAnalyzedBackgroundColor] = backgroundColor
+    dict[self.analyzedBackgroundColor] = backgroundColor
     
     if primaryColor == nil {
       if darkBackground {
-        dict[self.kAnalyzedPrimaryColor] = UIColor.whiteColor()
+        dict[self.analyzedPrimaryColor] = UIColor.whiteColor()
       } else {
-        dict[self.kAnalyzedPrimaryColor] = UIColor.blackColor()
+        dict[self.analyzedPrimaryColor] = UIColor.blackColor()
       }
     } else {
-      dict[self.kAnalyzedPrimaryColor] = primaryColor.memory
+      dict[self.analyzedPrimaryColor] = primaryColor.memory
     }
 
     
     if secondaryColor == nil {
       if darkBackground {
-        dict[self.kAnalyzedSecondaryColor] = UIColor.whiteColor()
+        dict[self.analyzedSecondaryColor] = UIColor.whiteColor()
       } else {
-        dict[self.kAnalyzedSecondaryColor] = UIColor.blackColor()
+        dict[self.analyzedSecondaryColor] = UIColor.blackColor()
       }
     } else {
-      dict[self.kAnalyzedSecondaryColor] = secondaryColor.memory
+      dict[self.analyzedSecondaryColor] = secondaryColor.memory
     }
 
     
     if detailColor == nil {
       if darkBackground {
-        dict[self.kAnalyzedDetailColor] = UIColor.whiteColor()
+        dict[self.analyzedDetailColor] = UIColor.whiteColor()
       } else {
-        dict[self.kAnalyzedDetailColor] = UIColor.blackColor()
+        dict[self.analyzedDetailColor] = UIColor.blackColor()
       }
     } else {
-      dict[self.kAnalyzedDetailColor] = detailColor.memory
+      dict[self.analyzedDetailColor] = detailColor.memory
     }
     
     return dict
