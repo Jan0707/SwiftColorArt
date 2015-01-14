@@ -13,13 +13,15 @@
 		FE33C6B01A62B7D200D499EF /* mounthood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AB1A62B7D200D499EF /* mounthood.jpg */; };
 		FE33C6B11A62B7D200D499EF /* pontesisto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AC1A62B7D200D499EF /* pontesisto.jpg */; };
 		FE33C6B21A62B7D200D499EF /* reykjavik.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AD1A62B7D200D499EF /* reykjavik.jpg */; };
+		FE33C6B41A62BFB600D499EF /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33C6B31A62BFB600D499EF /* Border.swift */; };
+		FE33C6B51A62C1BD00D499EF /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33C6B31A62BFB600D499EF /* Border.swift */; };
 		FE9BF7171A5C75F800065165 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7161A5C75F800065165 /* AppDelegate.swift */; };
 		FE9BF7191A5C75F800065165 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7181A5C75F800065165 /* MasterViewController.swift */; };
 		FE9BF71B1A5C75F800065165 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF71A1A5C75F800065165 /* DetailViewController.swift */; };
 		FE9BF71E1A5C75F800065165 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF71C1A5C75F800065165 /* Main.storyboard */; };
 		FE9BF7201A5C75F800065165 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF71F1A5C75F800065165 /* Images.xcassets */; };
 		FE9BF7231A5C75F800065165 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF7211A5C75F800065165 /* LaunchScreen.xib */; };
-		FE9BF72F1A5C75F800065165 /* SwiftColorArtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF72E1A5C75F800065165 /* SwiftColorArtTests.swift */; };
+		FE9BF72F1A5C75F800065165 /* SwiftColorArtBorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */; };
 		FE9BF7391A5C774200065165 /* SwiftColorArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7381A5C774200065165 /* SwiftColorArt.swift */; };
 		FE9BF73F1A5CA15C00065165 /* centaurea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF73E1A5CA15C00065165 /* centaurea.jpg */; };
 /* End PBXBuildFile section */
@@ -41,6 +43,7 @@
 		FE33C6AB1A62B7D200D499EF /* mounthood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mounthood.jpg; sourceTree = "<group>"; };
 		FE33C6AC1A62B7D200D499EF /* pontesisto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pontesisto.jpg; sourceTree = "<group>"; };
 		FE33C6AD1A62B7D200D499EF /* reykjavik.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = reykjavik.jpg; sourceTree = "<group>"; };
+		FE33C6B31A62BFB600D499EF /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 		FE9BF7111A5C75F800065165 /* SwiftColorArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftColorArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9BF7151A5C75F800065165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE9BF7161A5C75F800065165 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +54,7 @@
 		FE9BF7221A5C75F800065165 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FE9BF7281A5C75F800065165 /* SwiftColorArtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftColorArtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9BF72D1A5C75F800065165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE9BF72E1A5C75F800065165 /* SwiftColorArtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftColorArtTests.swift; sourceTree = "<group>"; };
+		FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftColorArtBorderTests.swift; sourceTree = "<group>"; };
 		FE9BF7381A5C774200065165 /* SwiftColorArt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftColorArt.swift; path = SwiftColorArt/Classes/SwiftColorArt.swift; sourceTree = "<group>"; };
 		FE9BF73E1A5CA15C00065165 /* centaurea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = centaurea.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +122,7 @@
 		FE9BF72B1A5C75F800065165 /* SwiftColorArtTests */ = {
 			isa = PBXGroup;
 			children = (
-				FE9BF72E1A5C75F800065165 /* SwiftColorArtTests.swift */,
+				FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */,
 				FE9BF72C1A5C75F800065165 /* Supporting Files */,
 			);
 			path = SwiftColorArtTests;
@@ -137,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				FE9BF7381A5C774200065165 /* SwiftColorArt.swift */,
+				FE33C6B31A62BFB600D499EF /* Border.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -262,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE9BF71B1A5C75F800065165 /* DetailViewController.swift in Sources */,
+				FE33C6B41A62BFB600D499EF /* Border.swift in Sources */,
 				FE9BF7391A5C774200065165 /* SwiftColorArt.swift in Sources */,
 				FE9BF7191A5C75F800065165 /* MasterViewController.swift in Sources */,
 				FE9BF7171A5C75F800065165 /* AppDelegate.swift in Sources */,
@@ -273,7 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE9BF72F1A5C75F800065165 /* SwiftColorArtTests.swift in Sources */,
+				FE9BF72F1A5C75F800065165 /* SwiftColorArtBorderTests.swift in Sources */,
+				FE33C6B51A62C1BD00D499EF /* Border.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
