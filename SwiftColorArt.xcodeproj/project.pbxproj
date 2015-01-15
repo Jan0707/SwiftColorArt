@@ -43,7 +43,7 @@
 		FE33C6AB1A62B7D200D499EF /* mounthood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mounthood.jpg; sourceTree = "<group>"; };
 		FE33C6AC1A62B7D200D499EF /* pontesisto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pontesisto.jpg; sourceTree = "<group>"; };
 		FE33C6AD1A62B7D200D499EF /* reykjavik.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = reykjavik.jpg; sourceTree = "<group>"; };
-		FE33C6B31A62BFB600D499EF /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		FE33C6B31A62BFB600D499EF /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; usesTabs = 0; };
 		FE9BF7111A5C75F800065165 /* SwiftColorArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftColorArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9BF7151A5C75F800065165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE9BF7161A5C75F800065165 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

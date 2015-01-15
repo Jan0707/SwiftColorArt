@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import CoreGraphics
 
+/// Border
+///
+/// A struct to keep trac of dimensions and border width to check a point's location
+///
 struct Border {
   
   let rect: CGRect
@@ -26,12 +30,11 @@ struct Border {
     self.width = width
     self.top = top
     self.right = right
-    self.bottom = right
-    self.left = right
+    self.bottom = bottom
+    self.left = left
   }
   
   func isPointInBorder(point: CGPoint) -> Bool {
-    
     if top && point.y <= width {
       return true
     } else if right && point.x >= rect.maxX - width {

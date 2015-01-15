@@ -16,13 +16,15 @@ class SwiftColorArt {
   var secondaryColor: UIColor?
   var detailColor: UIColor?
   
+  var border: Border
+
   let analyzedBackgroundColor: String = "analyzedBackgroundColor"
   let analyzedPrimaryColor: String    = "analyzedPrimaryColor"
   let analyzedSecondaryColor: String  = "analyzedSecondaryColor"
   let analyzedDetailColor: String     = "analyzedDetailColor"
   
   convenience init(inputImage: UIImage) {
-    let sampleSize: CGSize = CGSize(width: 64, height: 64)
+    let sampleSize: CGSize = CGSize(width: 128, height: 128)
 
     self.init(inputImage: inputImage, imageSampleSize: sampleSize, minimunColorCount: 0)
   }
@@ -31,6 +33,9 @@ class SwiftColorArt {
     self.minimunColorCount = minimunColorCount
     
     self.image = SwiftColorArt.resizeImage(inputImage, targetSize: imageSampleSize)
+  
+    let rect = CGRect(x: 0, y: 0, width: self.image.size.width, height: self.image.size.height)
+    border = Border(rect: rect, width: 3, top: true, right: true, bottom: true, left: true)
     
     self.processImage()
   }
@@ -124,7 +129,9 @@ class SwiftColorArt {
         
         let color:UIColor = UIColor(red: red, green: green, blue: blue, alpha: alpha)
         
-        if x == 0 {
+        let point = CGPoint(x: Int(x), y: Int(y))
+        
+        if border.isPointInBorder(point) {
           edgeColors.addObject(color)
         } else {
           imageColors.addObject(color)
