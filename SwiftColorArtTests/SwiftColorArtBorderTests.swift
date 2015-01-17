@@ -8,8 +8,9 @@
 
 import UIKit
 import XCTest
+import SwiftColorArtFramework
 
-class SwiftColorArtBorderTest: XCTestCase {
+class SwiftColorArtFrameworkBorderTest: XCTestCase {
   
   func calculationMethod(border: Border){
     var pointsInBorder = 0

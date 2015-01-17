@@ -14,18 +14,18 @@ import CoreGraphics
 ///
 /// A struct to keep trac of dimensions and border width to check a point's location
 ///
-struct Border {
+public struct Border {
   
-  let rect: CGRect
+  public let rect: CGRect
   
-  let width: CGFloat
+  public let width: CGFloat
   
   let top: Bool
   let right: Bool
   let bottom: Bool
   let left: Bool
   
-  init (rect: CGRect, width: CGFloat, top: Bool, right: Bool, bottom: Bool, left: Bool ){
+  public init (rect: CGRect, width: CGFloat, top: Bool, right: Bool, bottom: Bool, left: Bool ){
     self.rect = rect
     self.width = width
     self.top = top
@@ -34,7 +34,7 @@ struct Border {
     self.left = left
   }
   
-  func isPointInBorder(point: CGPoint) -> Bool {
+  public func isPointInBorder(point: CGPoint) -> Bool {
     if top && point.y <= width {
       return true
     } else if right && point.x >= rect.maxX - width {
@@ -48,7 +48,7 @@ struct Border {
     return false
   }
   
-  func createBorderSet() -> [CGPoint] {
+  public func createBorderSet() -> [CGPoint] {
     
     var borderSet: [CGPoint] = Array()
     

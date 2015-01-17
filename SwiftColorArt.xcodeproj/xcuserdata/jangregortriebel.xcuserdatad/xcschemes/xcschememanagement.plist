@@ -9,9 +9,24 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SwiftColorArtFramework.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>FE23BE7A1A6A749200DFE6FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE23BE841A6A749200DFE6FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FE9BF7101A5C75F800065165</key>
 		<dict>
 			<key>primary</key>

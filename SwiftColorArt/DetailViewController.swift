@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftColorArtFramework
 
 class DetailViewController: UIViewController {
 
@@ -29,7 +30,7 @@ class DetailViewController: UIViewController {
         
         imageView.image = image
                 
-        var swiftColorArt:SwiftColorArt = SwiftColorArt(inputImage: image)
+        var swiftColorArt:SWColorArt = SWColorArt(inputImage: image)
         
         self.view.backgroundColor = swiftColorArt.backgroundColor!
         

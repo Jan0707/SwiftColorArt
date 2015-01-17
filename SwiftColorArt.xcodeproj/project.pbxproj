@@ -7,26 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE23BE861A6A749200DFE6FC /* SwiftColorArtFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE23BE7B1A6A749200DFE6FC /* SwiftColorArtFramework.framework */; };
+		FE23BE921A6A749200DFE6FC /* SwiftColorArtFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE23BE7B1A6A749200DFE6FC /* SwiftColorArtFramework.framework */; };
+		FE23BE931A6A749200DFE6FC /* SwiftColorArtFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE23BE7B1A6A749200DFE6FC /* SwiftColorArtFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FE23BE9B1A6A753800DFE6FC /* SwiftColorArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7381A5C774200065165 /* SwiftColorArt.swift */; };
+		FE23BE9C1A6A753800DFE6FC /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33C6B31A62BFB600D499EF /* Border.swift */; };
+		FE23BE9F1A6A776500DFE6FC /* SwiftColorArtBorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */; };
 		FE33C6A81A62B24A00D499EF /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33C6A71A62B24A00D499EF /* ExampleData.swift */; };
 		FE33C6AE1A62B7D200D499EF /* carousel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6A91A62B7D200D499EF /* carousel.jpg */; };
 		FE33C6AF1A62B7D200D499EF /* greenpeas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AA1A62B7D200D499EF /* greenpeas.jpg */; };
 		FE33C6B01A62B7D200D499EF /* mounthood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AB1A62B7D200D499EF /* mounthood.jpg */; };
 		FE33C6B11A62B7D200D499EF /* pontesisto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AC1A62B7D200D499EF /* pontesisto.jpg */; };
 		FE33C6B21A62B7D200D499EF /* reykjavik.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AD1A62B7D200D499EF /* reykjavik.jpg */; };
-		FE33C6B41A62BFB600D499EF /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33C6B31A62BFB600D499EF /* Border.swift */; };
-		FE33C6B51A62C1BD00D499EF /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33C6B31A62BFB600D499EF /* Border.swift */; };
 		FE9BF7171A5C75F800065165 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7161A5C75F800065165 /* AppDelegate.swift */; };
 		FE9BF7191A5C75F800065165 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7181A5C75F800065165 /* MasterViewController.swift */; };
 		FE9BF71B1A5C75F800065165 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF71A1A5C75F800065165 /* DetailViewController.swift */; };
 		FE9BF71E1A5C75F800065165 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF71C1A5C75F800065165 /* Main.storyboard */; };
 		FE9BF7201A5C75F800065165 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF71F1A5C75F800065165 /* Images.xcassets */; };
 		FE9BF7231A5C75F800065165 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF7211A5C75F800065165 /* LaunchScreen.xib */; };
-		FE9BF72F1A5C75F800065165 /* SwiftColorArtBorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */; };
-		FE9BF7391A5C774200065165 /* SwiftColorArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7381A5C774200065165 /* SwiftColorArt.swift */; };
 		FE9BF73F1A5CA15C00065165 /* centaurea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE9BF73E1A5CA15C00065165 /* centaurea.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FE23BE871A6A749200DFE6FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE9BF7091A5C75F800065165 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE23BE7A1A6A749200DFE6FC;
+			remoteInfo = SwiftColorArtFramework;
+		};
+		FE23BE891A6A749200DFE6FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE9BF7091A5C75F800065165 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE9BF7101A5C75F800065165;
+			remoteInfo = SwiftColorArt;
+		};
+		FE23BE901A6A749200DFE6FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE9BF7091A5C75F800065165 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE23BE7A1A6A749200DFE6FC;
+			remoteInfo = SwiftColorArtFramework;
+		};
 		FE9BF7291A5C75F800065165 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FE9BF7091A5C75F800065165 /* Project object */;
@@ -36,7 +59,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FE23BE991A6A749200DFE6FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FE23BE931A6A749200DFE6FC /* SwiftColorArtFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FE23BE7B1A6A749200DFE6FC /* SwiftColorArtFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftColorArtFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE23BE7E1A6A749200DFE6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE23BE7F1A6A749200DFE6FC /* SwiftColorArtFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftColorArtFramework.h; sourceTree = "<group>"; };
+		FE23BE851A6A749200DFE6FC /* SwiftColorArtFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftColorArtFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE23BE8D1A6A749200DFE6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE33C6A71A62B24A00D499EF /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		FE33C6A91A62B7D200D499EF /* carousel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carousel.jpg; sourceTree = "<group>"; };
 		FE33C6AA1A62B7D200D499EF /* greenpeas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = greenpeas.jpg; sourceTree = "<group>"; };
@@ -54,16 +96,32 @@
 		FE9BF7221A5C75F800065165 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FE9BF7281A5C75F800065165 /* SwiftColorArtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftColorArtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9BF72D1A5C75F800065165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftColorArtBorderTests.swift; sourceTree = "<group>"; };
+		FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftColorArtBorderTests.swift; path = ../SwiftColorArtTests/SwiftColorArtBorderTests.swift; sourceTree = "<group>"; };
 		FE9BF7381A5C774200065165 /* SwiftColorArt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftColorArt.swift; path = SwiftColorArt/Classes/SwiftColorArt.swift; sourceTree = "<group>"; };
 		FE9BF73E1A5CA15C00065165 /* centaurea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = centaurea.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FE23BE771A6A749200DFE6FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE23BE821A6A749200DFE6FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE23BE861A6A749200DFE6FC /* SwiftColorArtFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE9BF70E1A5C75F800065165 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE23BE921A6A749200DFE6FC /* SwiftColorArtFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,12 +135,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE9BF7081A5C75F800065165 = {
+		FE23BE7C1A6A749200DFE6FC /* SwiftColorArtFramework */ = {
 			isa = PBXGroup;
 			children = (
 				FE9BF73A1A5C774700065165 /* Classes */,
+				FE23BE7F1A6A749200DFE6FC /* SwiftColorArtFramework.h */,
+				FE23BE7D1A6A749200DFE6FC /* Supporting Files */,
+			);
+			path = SwiftColorArtFramework;
+			sourceTree = "<group>";
+		};
+		FE23BE7D1A6A749200DFE6FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE23BE7E1A6A749200DFE6FC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE23BE8B1A6A749200DFE6FC /* SwiftColorArtFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */,
+				FE23BE8C1A6A749200DFE6FC /* Supporting Files */,
+			);
+			path = SwiftColorArtFrameworkTests;
+			sourceTree = "<group>";
+		};
+		FE23BE8C1A6A749200DFE6FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE23BE8D1A6A749200DFE6FC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE9BF7081A5C75F800065165 = {
+			isa = PBXGroup;
+			children = (
 				FE9BF7131A5C75F800065165 /* SwiftColorArt */,
 				FE9BF72B1A5C75F800065165 /* SwiftColorArtTests */,
+				FE23BE7C1A6A749200DFE6FC /* SwiftColorArtFramework */,
+				FE23BE8B1A6A749200DFE6FC /* SwiftColorArtFrameworkTests */,
 				FE9BF7121A5C75F800065165 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +186,8 @@
 			children = (
 				FE9BF7111A5C75F800065165 /* SwiftColorArt.app */,
 				FE9BF7281A5C75F800065165 /* SwiftColorArtTests.xctest */,
+				FE23BE7B1A6A749200DFE6FC /* SwiftColorArtFramework.framework */,
+				FE23BE851A6A749200DFE6FC /* SwiftColorArtFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,7 +218,6 @@
 		FE9BF72B1A5C75F800065165 /* SwiftColorArtTests */ = {
 			isa = PBXGroup;
 			children = (
-				FE9BF72E1A5C75F800065165 /* SwiftColorArtBorderTests.swift */,
 				FE9BF72C1A5C75F800065165 /* Supporting Files */,
 			);
 			path = SwiftColorArtTests;
@@ -143,6 +238,7 @@
 				FE33C6B31A62BFB600D499EF /* Border.swift */,
 			);
 			name = Classes;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FE9BF73D1A5CA13B00065165 /* examples */ = {
@@ -161,7 +257,54 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		FE23BE781A6A749200DFE6FC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		FE23BE7A1A6A749200DFE6FC /* SwiftColorArtFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE23BE981A6A749200DFE6FC /* Build configuration list for PBXNativeTarget "SwiftColorArtFramework" */;
+			buildPhases = (
+				FE23BE761A6A749200DFE6FC /* Sources */,
+				FE23BE771A6A749200DFE6FC /* Frameworks */,
+				FE23BE781A6A749200DFE6FC /* Headers */,
+				FE23BE791A6A749200DFE6FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftColorArtFramework;
+			productName = SwiftColorArtFramework;
+			productReference = FE23BE7B1A6A749200DFE6FC /* SwiftColorArtFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FE23BE841A6A749200DFE6FC /* SwiftColorArtFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE23BE9A1A6A749200DFE6FC /* Build configuration list for PBXNativeTarget "SwiftColorArtFrameworkTests" */;
+			buildPhases = (
+				FE23BE811A6A749200DFE6FC /* Sources */,
+				FE23BE821A6A749200DFE6FC /* Frameworks */,
+				FE23BE831A6A749200DFE6FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE23BE881A6A749200DFE6FC /* PBXTargetDependency */,
+				FE23BE8A1A6A749200DFE6FC /* PBXTargetDependency */,
+			);
+			name = SwiftColorArtFrameworkTests;
+			productName = SwiftColorArtFrameworkTests;
+			productReference = FE23BE851A6A749200DFE6FC /* SwiftColorArtFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FE9BF7101A5C75F800065165 /* SwiftColorArt */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE9BF7321A5C75F800065165 /* Build configuration list for PBXNativeTarget "SwiftColorArt" */;
@@ -169,10 +312,12 @@
 				FE9BF70D1A5C75F800065165 /* Sources */,
 				FE9BF70E1A5C75F800065165 /* Frameworks */,
 				FE9BF70F1A5C75F800065165 /* Resources */,
+				FE23BE991A6A749200DFE6FC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FE23BE911A6A749200DFE6FC /* PBXTargetDependency */,
 			);
 			name = SwiftColorArt;
 			productName = SwiftColorArt;
@@ -206,6 +351,13 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Jan Gregor Triebel";
 				TargetAttributes = {
+					FE23BE7A1A6A749200DFE6FC = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					FE23BE841A6A749200DFE6FC = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = FE9BF7101A5C75F800065165;
+					};
 					FE9BF7101A5C75F800065165 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -230,11 +382,27 @@
 			targets = (
 				FE9BF7101A5C75F800065165 /* SwiftColorArt */,
 				FE9BF7271A5C75F800065165 /* SwiftColorArtTests */,
+				FE23BE7A1A6A749200DFE6FC /* SwiftColorArtFramework */,
+				FE23BE841A6A749200DFE6FC /* SwiftColorArtFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FE23BE791A6A749200DFE6FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE23BE831A6A749200DFE6FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE9BF70F1A5C75F800065165 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,13 +429,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FE23BE761A6A749200DFE6FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE23BE9B1A6A753800DFE6FC /* SwiftColorArt.swift in Sources */,
+				FE23BE9C1A6A753800DFE6FC /* Border.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE23BE811A6A749200DFE6FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE23BE9F1A6A776500DFE6FC /* SwiftColorArtBorderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE9BF70D1A5C75F800065165 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FE9BF71B1A5C75F800065165 /* DetailViewController.swift in Sources */,
-				FE33C6B41A62BFB600D499EF /* Border.swift in Sources */,
-				FE9BF7391A5C774200065165 /* SwiftColorArt.swift in Sources */,
 				FE9BF7191A5C75F800065165 /* MasterViewController.swift in Sources */,
 				FE9BF7171A5C75F800065165 /* AppDelegate.swift in Sources */,
 				FE33C6A81A62B24A00D499EF /* ExampleData.swift in Sources */,
@@ -278,14 +461,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE9BF72F1A5C75F800065165 /* SwiftColorArtBorderTests.swift in Sources */,
-				FE33C6B51A62C1BD00D499EF /* Border.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FE23BE881A6A749200DFE6FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE23BE7A1A6A749200DFE6FC /* SwiftColorArtFramework */;
+			targetProxy = FE23BE871A6A749200DFE6FC /* PBXContainerItemProxy */;
+		};
+		FE23BE8A1A6A749200DFE6FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE9BF7101A5C75F800065165 /* SwiftColorArt */;
+			targetProxy = FE23BE891A6A749200DFE6FC /* PBXContainerItemProxy */;
+		};
+		FE23BE911A6A749200DFE6FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE23BE7A1A6A749200DFE6FC /* SwiftColorArtFramework */;
+			targetProxy = FE23BE901A6A749200DFE6FC /* PBXContainerItemProxy */;
+		};
 		FE9BF72A1A5C75F800065165 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FE9BF7101A5C75F800065165 /* SwiftColorArt */;
@@ -313,6 +509,80 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FE23BE941A6A749200DFE6FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftColorArtFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FE23BE951A6A749200DFE6FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftColorArtFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FE23BE961A6A749200DFE6FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftColorArtFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftColorArt.app/SwiftColorArt";
+			};
+			name = Debug;
+		};
+		FE23BE971A6A749200DFE6FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftColorArtFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftColorArt.app/SwiftColorArt";
+			};
+			name = Release;
+		};
 		FE9BF7301A5C75F800065165 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -447,6 +717,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FE23BE981A6A749200DFE6FC /* Build configuration list for PBXNativeTarget "SwiftColorArtFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE23BE941A6A749200DFE6FC /* Debug */,
+				FE23BE951A6A749200DFE6FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FE23BE9A1A6A749200DFE6FC /* Build configuration list for PBXNativeTarget "SwiftColorArtFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE23BE961A6A749200DFE6FC /* Debug */,
+				FE23BE971A6A749200DFE6FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		FE9BF70C1A5C75F800065165 /* Build configuration list for PBXProject "SwiftColorArt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

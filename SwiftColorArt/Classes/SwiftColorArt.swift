@@ -2,19 +2,19 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-/// SwiftColorArt
+/// SWColorArt
 ///
 /// A class to analyze an UIImage and get it's basic color usage
 ///
-class SwiftColorArt {
+public class SWColorArt {
 
   var minimunColorCount: Int
   var image: UIImage
   
-  var backgroundColor: UIColor?
-  var primaryColor: UIColor?
-  var secondaryColor: UIColor?
-  var detailColor: UIColor?
+  public var backgroundColor: UIColor?
+  public var primaryColor: UIColor?
+  public var secondaryColor: UIColor?
+  public var detailColor: UIColor?
   
   var border: Border
 
@@ -23,7 +23,7 @@ class SwiftColorArt {
   let analyzedSecondaryColor: String  = "analyzedSecondaryColor"
   let analyzedDetailColor: String     = "analyzedDetailColor"
   
-  convenience init(inputImage: UIImage) {
+  public convenience init(inputImage: UIImage) {
     let sampleSize: CGSize = CGSize(width: 128, height: 128)
 
     self.init(inputImage: inputImage, imageSampleSize: sampleSize, minimunColorCount: 0)
@@ -32,7 +32,7 @@ class SwiftColorArt {
   init(inputImage: UIImage, imageSampleSize: CGSize, minimunColorCount: Int) {
     self.minimunColorCount = minimunColorCount
     
-    self.image = SwiftColorArt.resizeImage(inputImage, targetSize: imageSampleSize)
+    self.image = SWColorArt.resizeImage(inputImage, targetSize: imageSampleSize)
   
     let rect = CGRect(x: 0, y: 0, width: self.image.size.width, height: self.image.size.height)
     border = Border(rect: rect, width: 3, top: true, right: true, bottom: true, left: true)
@@ -311,7 +311,7 @@ class SwiftColorArt {
 ///
 /// A class to keep track of times a color appears
 ///
-class CountedColor: NSObject {
+public class CountedColor: NSObject {
   
   let color: UIColor
   let count: Int
@@ -335,7 +335,7 @@ class CountedColor: NSObject {
 }
 
 extension UIColor {
-  func sca_isDarkColor() -> Bool {
+  public func sca_isDarkColor() -> Bool {
     let convertedColor: UIColor = self
     
     var r: CGFloat = CGFloat()
@@ -354,7 +354,7 @@ extension UIColor {
     return false;
   }
   
-  func sca_isBlackOrWhite() -> Bool {
+  public func sca_isBlackOrWhite() -> Bool {
     let tempColor: UIColor = self
     
     var r: CGFloat = CGFloat()
@@ -375,7 +375,7 @@ extension UIColor {
     return false
   }
   
-  func sca_colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
+  public func sca_colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
     let tempColor: UIColor = self
     
     var hue: CGFloat        = CGFloat(0.0)
@@ -392,7 +392,7 @@ extension UIColor {
     return self;
   }
   
-  func sca_isContrastingColor(color: UIColor) -> Bool {
+  public func sca_isContrastingColor(color: UIColor) -> Bool {
     let backgroundColor: UIColor = self;
     let foregroundColor: UIColor = color;
     
@@ -422,7 +422,7 @@ extension UIColor {
     return contrast > 1.6
   }
   
-  func sca_isDistinct(compareColor: UIColor) -> Bool {
+  public func sca_isDistinct(compareColor: UIColor) -> Bool {
     let convertedColor: UIColor = self;
     let convertedCompareColor: UIColor = compareColor;
     
