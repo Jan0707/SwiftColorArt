@@ -29,7 +29,7 @@ public class SWColorArt {
     self.init(inputImage: inputImage, imageSampleSize: sampleSize, minimunColorCount: 0)
   }
   
-  init(inputImage: UIImage, imageSampleSize: CGSize, minimunColorCount: Int) {
+  public init(inputImage: UIImage, imageSampleSize: CGSize, minimunColorCount: Int) {
     self.minimunColorCount = minimunColorCount
     
     self.image = SWColorArt.resizeImage(inputImage, targetSize: imageSampleSize)
@@ -419,7 +419,7 @@ extension UIColor {
       contrast = (fLum + 0.05) / (bLum + 0.05);
     }
     
-    return contrast > 1.6
+    return contrast > 1.8
   }
   
   public func sca_isDistinct(compareColor: UIColor) -> Bool {
