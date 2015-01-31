@@ -19,6 +19,8 @@
 		FE33C6B01A62B7D200D499EF /* mounthood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AB1A62B7D200D499EF /* mounthood.jpg */; };
 		FE33C6B11A62B7D200D499EF /* pontesisto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AC1A62B7D200D499EF /* pontesisto.jpg */; };
 		FE33C6B21A62B7D200D499EF /* reykjavik.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE33C6AD1A62B7D200D499EF /* reykjavik.jpg */; };
+		FE81411E1A7AB97D00F52BD8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81411D1A7AB97D00F52BD8 /* Storage.swift */; };
+		FE8141201A7ABB6600F52BD8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81411F1A7ABB6600F52BD8 /* Colors.swift */; };
 		FE9BF7171A5C75F800065165 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7161A5C75F800065165 /* AppDelegate.swift */; };
 		FE9BF7191A5C75F800065165 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF7181A5C75F800065165 /* MasterViewController.swift */; };
 		FE9BF71B1A5C75F800065165 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BF71A1A5C75F800065165 /* DetailViewController.swift */; };
@@ -50,6 +52,20 @@
 			remoteGlobalIDString = FE23BE7A1A6A749200DFE6FC;
 			remoteInfo = SwiftColorArtFramework;
 		};
+		FE2AE2BD1A7D73E800261364 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		FE2AE2BF1A7D73E800261364 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
 		FE9BF7291A5C75F800065165 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FE9BF7091A5C75F800065165 /* Project object */;
@@ -79,6 +95,7 @@
 		FE23BE7F1A6A749200DFE6FC /* SwiftColorArtFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftColorArtFramework.h; sourceTree = "<group>"; };
 		FE23BE851A6A749200DFE6FC /* SwiftColorArtFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftColorArtFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE23BE8D1A6A749200DFE6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = Submodules/CryptoSwift.xcodeproj; sourceTree = SOURCE_ROOT; };
 		FE33C6A71A62B24A00D499EF /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		FE33C6A91A62B7D200D499EF /* carousel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carousel.jpg; sourceTree = "<group>"; };
 		FE33C6AA1A62B7D200D499EF /* greenpeas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = greenpeas.jpg; sourceTree = "<group>"; };
@@ -86,6 +103,8 @@
 		FE33C6AC1A62B7D200D499EF /* pontesisto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pontesisto.jpg; sourceTree = "<group>"; };
 		FE33C6AD1A62B7D200D499EF /* reykjavik.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = reykjavik.jpg; sourceTree = "<group>"; };
 		FE33C6B31A62BFB600D499EF /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; usesTabs = 0; };
+		FE81411D1A7AB97D00F52BD8 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		FE81411F1A7ABB6600F52BD8 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FE9BF7111A5C75F800065165 /* SwiftColorArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftColorArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9BF7151A5C75F800065165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE9BF7161A5C75F800065165 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +157,7 @@
 		FE23BE7C1A6A749200DFE6FC /* SwiftColorArtFramework */ = {
 			isa = PBXGroup;
 			children = (
+				FE8141231A7D66BF00F52BD8 /* Vendor */,
 				FE9BF73A1A5C774700065165 /* Classes */,
 				FE23BE7F1A6A749200DFE6FC /* SwiftColorArtFramework.h */,
 				FE23BE7D1A6A749200DFE6FC /* Supporting Files */,
@@ -168,6 +188,23 @@
 				FE23BE8D1A6A749200DFE6FC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE2AE2B91A7D73E800261364 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE2AE2BE1A7D73E800261364 /* CryptoSwift.framework */,
+				FE2AE2C01A7D73E800261364 /* CryptoSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE8141231A7D66BF00F52BD8 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		FE9BF7081A5C75F800065165 = {
@@ -236,6 +273,8 @@
 			children = (
 				FE9BF7381A5C774200065165 /* SwiftColorArt.swift */,
 				FE33C6B31A62BFB600D499EF /* Border.swift */,
+				FE81411D1A7AB97D00F52BD8 /* Storage.swift */,
+				FE81411F1A7ABB6600F52BD8 /* Colors.swift */,
 			);
 			name = Classes;
 			path = ..;
@@ -378,6 +417,12 @@
 			mainGroup = FE9BF7081A5C75F800065165;
 			productRefGroup = FE9BF7121A5C75F800065165 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FE2AE2B91A7D73E800261364 /* Products */;
+					ProjectRef = FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FE9BF7101A5C75F800065165 /* SwiftColorArt */,
@@ -387,6 +432,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FE2AE2BE1A7D73E800261364 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = FE2AE2BD1A7D73E800261364 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FE2AE2C01A7D73E800261364 /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = FE2AE2BF1A7D73E800261364 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE23BE791A6A749200DFE6FC /* Resources */ = {
@@ -434,7 +496,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE23BE9B1A6A753800DFE6FC /* SwiftColorArt.swift in Sources */,
+				FE8141201A7ABB6600F52BD8 /* Colors.swift in Sources */,
 				FE23BE9C1A6A753800DFE6FC /* Border.swift in Sources */,
+				FE81411E1A7AB97D00F52BD8 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,6 +788,7 @@
 				FE23BE951A6A749200DFE6FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE23BE9A1A6A749200DFE6FC /* Build configuration list for PBXNativeTarget "SwiftColorArtFrameworkTests" */ = {
 			isa = XCConfigurationList;
@@ -732,6 +797,7 @@
 				FE23BE971A6A749200DFE6FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE9BF70C1A5C75F800065165 /* Build configuration list for PBXProject "SwiftColorArt" */ = {
 			isa = XCConfigurationList;

@@ -10,6 +10,8 @@
 	<string>SwiftColorArt</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
+		<string>https://github.com/krzyzanowskim/CryptoSwift.git</string>
 		<key>E3324B80A59CD324950190EF07D26CEEF0223D86</key>
 		<string>https://github.com/Jan0707/SwiftColorArt.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>SwiftColorArt.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
+		<string>../../../Volumes/SecureNifty/github/CryptoSwift</string>
 		<key>E3324B80A59CD324950190EF07D26CEEF0223D86</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>E3324B80A59CD324950190EF07D26CEEF0223D86</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CryptoSwift</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

@@ -41,12 +41,27 @@ public class SWColorArt {
   }
   
   private func processImage() {
-    var colors: [String: UIColor] = self.analyzeImage(self.image)
     
-    self.backgroundColor = colors[self.analyzedBackgroundColor]!
-    self.primaryColor    = colors[self.analyzedPrimaryColor]!
-    self.secondaryColor  = colors[self.analyzedSecondaryColor]!
-    self.detailColor     = colors[self.analyzedDetailColor]!
+    var storage = Storage()
+    
+    if storage.doesCacheExistForImage(self.image) {
+      let storedColors = storage.loadColorsForImage(self.image)
+      
+      self.backgroundColor = storedColors.backgroundColor
+      self.primaryColor = storedColors.primaryColor
+      self.secondaryColor = storedColors.secondaryColor
+      self.detailColor = storedColors.detailColor
+    } else {
+      var colors: [String: UIColor] = self.analyzeImage(self.image)
+      
+      self.backgroundColor = colors[self.analyzedBackgroundColor]!
+      self.primaryColor    = colors[self.analyzedPrimaryColor]!
+      self.secondaryColor  = colors[self.analyzedSecondaryColor]!
+      self.detailColor     = colors[self.analyzedDetailColor]!
+
+      let storedColors = Colors(backgroundColor: self.backgroundColor!, primaryColor: self.primaryColor!, secondaryColor: self.secondaryColor!, detailColor: self.detailColor!)
+      storage.storeColorsForImage(storedColors, image: self.image)
+    }
   }
   
   private func analyzeImage(inputImage: UIImage) -> [String: UIColor] {

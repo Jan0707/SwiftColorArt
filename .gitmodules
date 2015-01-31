@@ -1,0 +1,3 @@
+[submodule "Submodules"]
+	path = Submodules
+	url = https://github.com/krzyzanowskim/CryptoSwift.git
