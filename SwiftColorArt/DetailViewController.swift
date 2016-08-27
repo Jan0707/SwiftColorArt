@@ -26,18 +26,18 @@ class DetailViewController: UIViewController {
     if let detail: ExampleData = self.detailItem {
       if let imageView = self.imageView {
         
-        var image:UIImage = UIImage(named: detail.imageName)!
+        let image:UIImage = UIImage(named: detail.imageName)!
         
         imageView.image = image
                 
-        var swiftColorArt:SWColorArt = SWColorArt(inputImage: image)
+        let swiftColorArt:SWColorArt = SWColorArt(inputImage: image)
         
         self.view.backgroundColor = swiftColorArt.backgroundColor!
         
         self.primaryColorLabel.textColor   = swiftColorArt.primaryColor!
         self.secondaryColorLabel.textColor = swiftColorArt.secondaryColor!
         
-        self.detailColorButton.setTitleColor(swiftColorArt.detailColor!, forState: UIControlState.Normal)
+        self.detailColorButton.setTitleColor(swiftColorArt.detailColor!, for: [])
         
         self.primaryColorLabel.text = detail.title
       }
@@ -47,9 +47,9 @@ class DetailViewController: UIViewController {
   @IBAction func clickButton(sender: AnyObject) {
     if let detail: ExampleData = self.detailItem {
       let targetURL = NSURL(string: detail.url)
-      let application = UIApplication.sharedApplication()
+      let application = UIApplication.shared()
       
-      application.openURL(targetURL!);
+      application.openURL(targetURL! as URL);
     }
   }
   

@@ -34,7 +34,7 @@ public struct Border {
     self.left = left
   }
   
-  public func isPointInBorder(point: CGPoint) -> Bool {
+  public func isPointInBorder(_ point: CGPoint) -> Bool {
     if top && point.y <= width {
       return true
     } else if right && point.x >= rect.maxX - width {

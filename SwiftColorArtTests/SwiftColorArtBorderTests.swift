@@ -21,7 +21,7 @@ class SwiftColorArtFrameworkBorderTest: XCTestCase {
         let point = CGPoint(x: x, y: y)
         
         if border.isPointInBorder(point) {
-          pointsInBorder++
+          pointsInBorder += 1
         }
       }
     }
@@ -29,41 +29,41 @@ class SwiftColorArtFrameworkBorderTest: XCTestCase {
   
   func testInBorderViaCalculationSmall() {
     
-    var rect   = CGRect(x: 0, y: 0, width: 32, height: 32)
-    var border = Border(rect: rect, width: 2, top: true, right: true, bottom: true, left: true)
+    let rect   = CGRect(x: 0, y: 0, width: 32, height: 32)
+    let border = Border(rect: rect, width: 2, top: true, right: true, bottom: true, left: true)
     
-    self.measureBlock() {
-      self.calculationMethod(border)
+    self.measure() {
+      self.calculationMethod(border: border)
     }
   }
   
   func testInBorderViaCalculationMedium() {
     
-    var rect   = CGRect(x: 0, y: 0, width: 128, height: 128)
-    var border = Border(rect: rect, width: 8, top: true, right: true, bottom: true, left: true)
+    let rect   = CGRect(x: 0, y: 0, width: 128, height: 128)
+    let border = Border(rect: rect, width: 8, top: true, right: true, bottom: true, left: true)
     
-    self.measureBlock() {
-      self.calculationMethod(border)
+    self.measure() {
+      self.calculationMethod(border: border)
     }
   }
   
   func testInBorderViaCalculationLarge() {
     
-    var rect   = CGRect(x: 0, y: 0, width: 512, height: 512)
-    var border = Border(rect: rect, width: 32, top: true, right: true, bottom: true, left: true)
+    let rect   = CGRect(x: 0, y: 0, width: 512, height: 512)
+    let border = Border(rect: rect, width: 32, top: true, right: true, bottom: true, left: true)
     
-    self.measureBlock() {
-      self.calculationMethod(border)
+    self.measure() {
+      self.calculationMethod(border: border)
     }
   }
   
   func testInBorderViaCalculationExtraLarge() {
     
-    var rect   = CGRect(x: 0, y: 0, width: 2048, height: 2048)
-    var border = Border(rect: rect, width: 128, top: true, right: true, bottom: true, left: true)
+    let rect   = CGRect(x: 0, y: 0, width: 2048, height: 2048)
+    let border = Border(rect: rect, width: 128, top: true, right: true, bottom: true, left: true)
     
-    self.measureBlock() {
-      self.calculationMethod(border)
+    self.measure() {
+      self.calculationMethod(border: border)
     }
   }
 }

@@ -52,20 +52,6 @@
 			remoteGlobalIDString = FE23BE7A1A6A749200DFE6FC;
 			remoteInfo = SwiftColorArtFramework;
 		};
-		FE2AE2BD1A7D73E800261364 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE45519693E190098E6F3;
-			remoteInfo = CryptoSwift;
-		};
-		FE2AE2BF1A7D73E800261364 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE46019693E190098E6F3;
-			remoteInfo = CryptoSwiftTests;
-		};
 		FE9BF7291A5C75F800065165 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FE9BF7091A5C75F800065165 /* Project object */;
@@ -87,6 +73,15 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FEA7ED231D724694005E501F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +90,6 @@
 		FE23BE7F1A6A749200DFE6FC /* SwiftColorArtFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftColorArtFramework.h; sourceTree = "<group>"; };
 		FE23BE851A6A749200DFE6FC /* SwiftColorArtFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftColorArtFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE23BE8D1A6A749200DFE6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = Submodules/CryptoSwift.xcodeproj; sourceTree = SOURCE_ROOT; };
 		FE33C6A71A62B24A00D499EF /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		FE33C6A91A62B7D200D499EF /* carousel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carousel.jpg; sourceTree = "<group>"; };
 		FE33C6AA1A62B7D200D499EF /* greenpeas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = greenpeas.jpg; sourceTree = "<group>"; };
@@ -157,7 +151,6 @@
 		FE23BE7C1A6A749200DFE6FC /* SwiftColorArtFramework */ = {
 			isa = PBXGroup;
 			children = (
-				FE8141231A7D66BF00F52BD8 /* Vendor */,
 				FE9BF73A1A5C774700065165 /* Classes */,
 				FE23BE7F1A6A749200DFE6FC /* SwiftColorArtFramework.h */,
 				FE23BE7D1A6A749200DFE6FC /* Supporting Files */,
@@ -188,23 +181,6 @@
 				FE23BE8D1A6A749200DFE6FC /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FE2AE2B91A7D73E800261364 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FE2AE2BE1A7D73E800261364 /* CryptoSwift.framework */,
-				FE2AE2C01A7D73E800261364 /* CryptoSwiftTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FE8141231A7D66BF00F52BD8 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */,
-			);
-			name = Vendor;
 			sourceTree = "<group>";
 		};
 		FE9BF7081A5C75F800065165 = {
@@ -315,6 +291,7 @@
 				FE23BE771A6A749200DFE6FC /* Frameworks */,
 				FE23BE781A6A749200DFE6FC /* Headers */,
 				FE23BE791A6A749200DFE6FC /* Resources */,
+				FEA7ED231D724694005E501F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -387,7 +364,7 @@
 		FE9BF7091A5C75F800065165 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Jan Gregor Triebel";
 				TargetAttributes = {
 					FE23BE7A1A6A749200DFE6FC = {
@@ -417,12 +394,6 @@
 			mainGroup = FE9BF7081A5C75F800065165;
 			productRefGroup = FE9BF7121A5C75F800065165 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FE2AE2B91A7D73E800261364 /* Products */;
-					ProjectRef = FE2AE2B81A7D73E800261364 /* CryptoSwift.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FE9BF7101A5C75F800065165 /* SwiftColorArt */,
@@ -432,23 +403,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FE2AE2BE1A7D73E800261364 /* CryptoSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CryptoSwift.framework;
-			remoteRef = FE2AE2BD1A7D73E800261364 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FE2AE2C01A7D73E800261364 /* CryptoSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CryptoSwiftTests.xctest;
-			remoteRef = FE2AE2BF1A7D73E800261364 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE23BE791A6A749200DFE6FC /* Resources */ = {
@@ -588,6 +542,7 @@
 				INFOPLIST_FILE = SwiftColorArtFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangregor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,8 +562,10 @@
 				INFOPLIST_FILE = SwiftColorArtFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangregor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -628,6 +585,7 @@
 				);
 				INFOPLIST_FILE = SwiftColorArtFrameworkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangregor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftColorArt.app/SwiftColorArt";
 			};
@@ -642,7 +600,9 @@
 				);
 				INFOPLIST_FILE = SwiftColorArtFrameworkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangregor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftColorArt.app/SwiftColorArt";
 			};
 			name = Release;
@@ -667,8 +627,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -711,6 +673,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -727,9 +690,11 @@
 		FE9BF7331A5C75F800065165 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftColorArt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangegortriebel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -737,10 +702,13 @@
 		FE9BF7341A5C75F800065165 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftColorArt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangegortriebel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -758,6 +726,7 @@
 				);
 				INFOPLIST_FILE = SwiftColorArtTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangegortriebel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftColorArt.app/SwiftColorArt";
 			};
@@ -773,6 +742,7 @@
 				);
 				INFOPLIST_FILE = SwiftColorArtTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jangegortriebel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftColorArt.app/SwiftColorArt";
 			};

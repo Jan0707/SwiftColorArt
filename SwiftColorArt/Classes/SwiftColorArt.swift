@@ -42,7 +42,7 @@ public class SWColorArt {
   
   private func processImage() {
     
-    var storage = Storage()
+    let storage = Storage()
     
     if storage.doesCacheExistForImage(self.image) {
       let storedColors = storage.loadColorsForImage(self.image)
@@ -64,13 +64,13 @@ public class SWColorArt {
     }
   }
   
-  private func analyzeImage(inputImage: UIImage) -> [String: UIColor] {
+  private func analyzeImage(_ inputImage: UIImage) -> [String: UIColor] {
     var imageColors: [CountedColor] = []
     var backgroundColor: UIColor = self.findEdgeColorInImage(inputImage, colors: &imageColors);
     
-    var primaryColor: UnsafeMutablePointer<UIColor>   = nil
-    var secondaryColor: UnsafeMutablePointer<UIColor> = nil
-    var detailColor: UnsafeMutablePointer<UIColor>    = nil
+    var primaryColor: UnsafeMutablePointer<UIColor>?   = nil
+    var secondaryColor: UnsafeMutablePointer<UIColor>? = nil
+    var detailColor: UnsafeMutablePointer<UIColor>?    = nil
     
     let darkBackground: Bool = backgroundColor.sca_isDarkColor()
 
@@ -82,74 +82,73 @@ public class SWColorArt {
     
     if primaryColor == nil {
       if darkBackground {
-        dict[self.analyzedPrimaryColor] = UIColor.whiteColor()
+        dict[self.analyzedPrimaryColor] = UIColor.white()
       } else {
-        dict[self.analyzedPrimaryColor] = UIColor.blackColor()
+        dict[self.analyzedPrimaryColor] = UIColor.black()
       }
     } else {
-      dict[self.analyzedPrimaryColor] = primaryColor.memory
+      dict[self.analyzedPrimaryColor] = primaryColor?.pointee
     }
 
     
     if secondaryColor == nil {
       if darkBackground {
-        dict[self.analyzedSecondaryColor] = UIColor.whiteColor()
+        dict[self.analyzedSecondaryColor] = UIColor.white()
       } else {
-        dict[self.analyzedSecondaryColor] = UIColor.blackColor()
+        dict[self.analyzedSecondaryColor] = UIColor.black()
       }
     } else {
-      dict[self.analyzedSecondaryColor] = secondaryColor.memory
+      dict[self.analyzedSecondaryColor] = secondaryColor?.pointee
     }
 
     
     if detailColor == nil {
       if darkBackground {
-        dict[self.analyzedDetailColor] = UIColor.whiteColor()
+        dict[self.analyzedDetailColor] = UIColor.white()
       } else {
-        dict[self.analyzedDetailColor] = UIColor.blackColor()
+        dict[self.analyzedDetailColor] = UIColor.black()
       }
     } else {
-      dict[self.analyzedDetailColor] = detailColor.memory
+      dict[self.analyzedDetailColor] = detailColor?.pointee
     }
     
     return dict
   }
   
-  private func findEdgeColorInImage(inputImage: UIImage, inout colors: [CountedColor]) -> UIColor {
-    let imageRep: CGImageRef = image.CGImage;
+  private func findEdgeColorInImage(_ inputImage: UIImage, colors: inout [CountedColor]) -> UIColor {
+    let imageRep: CGImage = image.cgImage!;
     
-    let width: UInt  = CGImageGetWidth(imageRep)
-    let height: UInt = CGImageGetHeight(imageRep)
+    let width: Int  = imageRep.width
+    let height: Int = imageRep.height
     
-    let cs: CGColorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    let context: CGContext  = self.createBitmapContextFromImage(image.CGImage)
+    let context: CGContext  = self.createBitmapContextFromImage(image.cgImage!)
     let rect: CGRect        = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(width), height: CGFloat(height))
     
-    CGContextDrawImage(context, rect, image.CGImage);
+    context.draw(in: rect, image: image.cgImage!);
 
-    let imageColors: NSCountedSet = NSCountedSet(capacity: Int(width * height))
-    let edgeColors: NSCountedSet  = NSCountedSet(capacity: Int(height))
+    let imageColors: CountedSet = CountedSet(capacity: Int(width * height))
+    let edgeColors: CountedSet  = CountedSet(capacity: Int(height))
 
-    let data   = CGBitmapContextGetData(context)
+    let data   = context.data
     let dataType = UnsafeMutablePointer<UInt8>(data)
     
     for y in 0...height-1 {
       for x in 0...width-1 {
         let offset:Int = Int(4 * (x + y * width))
         
-        let alpha = CGFloat(dataType[offset])   / 255.0
-        let red   = CGFloat(dataType[offset+1]) / 255.0
-        let green = CGFloat(dataType[offset+2]) / 255.0
-        let blue  = CGFloat(dataType[offset+3]) / 255.0
+        let alpha = CGFloat((dataType?[offset])!)   / 255.0
+        let red   = CGFloat((dataType?[offset+1])!) / 255.0
+        let green = CGFloat((dataType?[offset+2])!) / 255.0
+        let blue  = CGFloat((dataType?[offset+3])!) / 255.0
         
         let color:UIColor = UIColor(red: red, green: green, blue: blue, alpha: alpha)
         
         let point = CGPoint(x: Int(x), y: Int(y))
         
         if border.isPointInBorder(point) {
-          edgeColors.addObject(color)
+          edgeColors.add(color)
         } else {
-          imageColors.addObject(color)
+          imageColors.add(color)
         }
       }
     }
@@ -158,7 +157,7 @@ public class SWColorArt {
     
     while let curColor = imageEnumerator.nextObject() as? UIColor
     {
-      let colorCount: Int = edgeColors.countForObject(curColor)
+      let colorCount: Int = edgeColors.count(for: curColor)
       
       if colorCount >= minimunColorCount {
         let container: CountedColor = CountedColor(color: curColor, count: colorCount)
@@ -168,22 +167,22 @@ public class SWColorArt {
     
     let enumerator: NSEnumerator = edgeColors.objectEnumerator()
     
-    var sortedColors: NSMutableArray = []
+    let sortedColors: NSMutableArray = []
     
     while let curColor = enumerator.nextObject() as? UIColor
     {
-      let colorCount: Int = edgeColors.countForObject(curColor)
+      let colorCount: Int = edgeColors.count(for: curColor)
       
       if colorCount <= minimunColorCount {
         continue
       }
       
       let container: CountedColor = CountedColor(color: curColor, count: colorCount)
-      sortedColors.addObject(container)
+      sortedColors.add(container)
     }
     
     // TODO: Use swifts sorting capabilities for this...
-    let finalColors: Array = sortedColors.sortedArrayUsingSelector(Selector("compare:"))
+    let finalColors: Array = sortedColors.sortedArray(using: #selector(CountedColor.compare(_:)))
     
     var proposedEdgeColor: CountedColor?
     
@@ -194,7 +193,7 @@ public class SWColorArt {
       if proposedEdgeColor!.color.sca_isBlackOrWhite() {
   
         for i in 1...finalColors.count - 1 {
-          let nextProposedColor: CountedColor = finalColors[i] as CountedColor
+          let nextProposedColor: CountedColor = finalColors[i] as! CountedColor
           
           if Double( nextProposedColor.count / proposedEdgeColor!.count) > 0.4 {  // make sure the second choice color is 40% as common as the first choice
             
@@ -211,18 +210,18 @@ public class SWColorArt {
     }
     
     if proposedEdgeColor == nil {
-      return UIColor.whiteColor()
+      return UIColor.white()
     }
     
     return proposedEdgeColor!.color;
   }
   
-  private func findTextColors(imageColors: [CountedColor], inout primaryColor: UnsafeMutablePointer<UIColor>,
-    inout secondaryColor: UnsafeMutablePointer<UIColor>, inout detailColor: UnsafeMutablePointer<UIColor>,
-    inout backgroundColor: UIColor) {
+  private func findTextColors(_ imageColors: [CountedColor], primaryColor: inout UnsafeMutablePointer<UIColor>?,
+    secondaryColor: inout UnsafeMutablePointer<UIColor>?, detailColor: inout UnsafeMutablePointer<UIColor>?,
+    backgroundColor: inout UIColor) {
     var curColor: UIColor
     
-    var sortedColors: NSMutableArray = NSMutableArray(capacity: imageColors.count)
+    let sortedColors: NSMutableArray = NSMutableArray(capacity: imageColors.count)
     let findDarkTextColor: Bool = !backgroundColor.sca_isDarkColor()
     
     if (imageColors.count > 0) {
@@ -240,61 +239,64 @@ public class SWColorArt {
           
           let container: CountedColor = CountedColor(color: curColor, count: colorCount)
           
-          sortedColors.addObject(container)
+          sortedColors.add(container)
         }
       }
     }
     
-    var finalSortedColors: Array = sortedColors.sortedArrayUsingSelector(Selector("compare:"))
+    var finalSortedColors: Array = sortedColors.sortedArray(using: #selector(CountedColor.compare(_:)))
     
     if finalSortedColors.count > 0 {
       for index in 0...finalSortedColors.count-1 {
         
-        let curContainer: CountedColor = finalSortedColors[index] as CountedColor
+        let curContainer: CountedColor = finalSortedColors[index] as! CountedColor
         
         curColor = curContainer.color;
         
         if primaryColor == nil {
           if curColor.sca_isContrastingColor(backgroundColor) {
-            primaryColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
-            primaryColor.memory = curColor;
+            primaryColor = UnsafeMutablePointer<UIColor>(calloc(1, sizeof(UIColor)))
+            primaryColor?.pointee = curColor;
           }
         } else if secondaryColor == nil {
-          if !primaryColor.memory.sca_isDistinct(curColor) || !curColor.sca_isContrastingColor(backgroundColor) {
+          if !(primaryColor?.pointee.sca_isDistinct(curColor))! || !curColor.sca_isContrastingColor(backgroundColor) {
             continue;
           }
-          secondaryColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
-          secondaryColor.memory = curColor;
+          secondaryColor = UnsafeMutablePointer<UIColor>(calloc(1, sizeof(UIColor)))
+          secondaryColor?.pointee = curColor;
         } else if detailColor == nil {
-          if !secondaryColor.memory.sca_isDistinct(curColor) || !primaryColor.memory.sca_isDistinct(curColor) || !curColor.sca_isContrastingColor(backgroundColor) {
+          if
+            !(secondaryColor?.pointee.sca_isDistinct(curColor))! ||
+            !(primaryColor?.pointee.sca_isDistinct(curColor))! ||
+            !curColor.sca_isContrastingColor(backgroundColor) {
             continue;
           }
-          detailColor = UnsafeMutablePointer<UIColor>(calloc(1, UInt(sizeof(UIColor))))
-          detailColor.memory = curColor;
+          detailColor = UnsafeMutablePointer<UIColor>(calloc(1, sizeof(UIColor)))
+          detailColor?.pointee = curColor;
           break;
         }
       }
     }
   }
   
-  private func createBitmapContextFromImage(inImage: CGImageRef) -> CGContext {
-    let pixelsWide: UInt = CGImageGetWidth(inImage)
-    let pixelsHigh: UInt = CGImageGetHeight(inImage)
+  private func createBitmapContextFromImage(_ inImage: CGImage) -> CGContext {
+    let pixelsWide: Int = inImage.width
+    let pixelsHigh: Int = inImage.height
 
     let bitmapBytesPerRow: Int = Int(pixelsWide * 4)
     let bitmapByteCount: Int   = Int(pixelsHigh) * bitmapBytesPerRow
 
     let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
 
-    let bitmapData: UnsafeMutablePointer<Void> = malloc(CUnsignedLong(bitmapByteCount))
-    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedFirst.rawValue)
+    let bitmapData: UnsafeMutablePointer<Void> = malloc(bitmapByteCount)
+    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
 
-    let context: CGContext = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, CUnsignedLong(8), CUnsignedLong(bitmapBytesPerRow), colorSpace, bitmapInfo)
+    let context: CGContext = CGContext(data: bitmapData, width: pixelsWide, height: pixelsHigh, bitsPerComponent: 8, bytesPerRow: bitmapBytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
     
     return context
   }
   
-  class func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+  class func resizeImage(_ image: UIImage, targetSize: CGSize) -> UIImage {
     let size: CGSize = image.size
     
     let widthRatio: CGFloat  = targetSize.width  / image.size.width
@@ -303,16 +305,16 @@ public class SWColorArt {
     var newSize: CGSize
     
     if widthRatio > heightRatio {
-      newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
     } else {
-      newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
     }
     
     let rect: CGRect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
     
     UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-    image.drawInRect(rect)
-    let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    image.draw(in: rect)
+    let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     
     return newImage
@@ -338,14 +340,14 @@ public class CountedColor: NSObject {
     super.init()
   }
   
-  func compare(object: CountedColor) -> NSComparisonResult {
+  func compare(_ object: CountedColor) -> ComparisonResult {
     if self.count < object.count  {
-      return NSComparisonResult.OrderedDescending
+      return ComparisonResult.orderedDescending
     } else if self.count == object.count {
-      return NSComparisonResult.OrderedSame
+      return ComparisonResult.orderedSame
     }
     
-    return NSComparisonResult.OrderedAscending
+    return ComparisonResult.orderedAscending
   }
 }
 
@@ -360,7 +362,7 @@ extension UIColor {
     
     convertedColor.getRed(&r, green: &g, blue: &b, alpha: &a)
     
-    var lum: CGFloat = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    let lum: CGFloat = 0.2126 * r + 0.7152 * g + 0.0722 * b
     
     if lum < 0.5 {
       return true;
@@ -390,7 +392,7 @@ extension UIColor {
     return false
   }
   
-  public func sca_colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
+  public func sca_colorWithMinimumSaturation(_ minSaturation: CGFloat) -> UIColor {
     let tempColor: UIColor = self
     
     var hue: CGFloat        = CGFloat(0.0)
@@ -407,7 +409,7 @@ extension UIColor {
     return self;
   }
   
-  public func sca_isContrastingColor(color: UIColor) -> Bool {
+  public func sca_isContrastingColor(_ color: UIColor) -> Bool {
     let backgroundColor: UIColor = self;
     let foregroundColor: UIColor = color;
     
@@ -423,8 +425,8 @@ extension UIColor {
     backgroundColor.getRed(&br, green: &bg, blue: &bb, alpha: &ba)
     foregroundColor.getRed(&fr, green: &fg, blue: &fb, alpha: &fa)
     
-    var bLum: CGFloat = CGFloat(0.2126 * br + 0.7152 * bg + 0.0722 * bb)
-    var fLum: CGFloat = CGFloat(0.2126 * fr + 0.7152 * fg + 0.0722 * fb)
+    let bLum: CGFloat = CGFloat(0.2126 * br + 0.7152 * bg + 0.0722 * bb)
+    let fLum: CGFloat = CGFloat(0.2126 * fr + 0.7152 * fg + 0.0722 * fb)
     
     var contrast: CGFloat = CGFloat(0);
     
@@ -437,7 +439,7 @@ extension UIColor {
     return contrast > 1.8
   }
   
-  public func sca_isDistinct(compareColor: UIColor) -> Bool {
+  public func sca_isDistinct(_ compareColor: UIColor) -> Bool {
     let convertedColor: UIColor = self;
     let convertedCompareColor: UIColor = compareColor;
     

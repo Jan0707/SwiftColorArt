@@ -23,20 +23,20 @@ class Colors: NSObject, NSCoding {
   }
   
   // MARK: NSCoding
-  
-  required convenience init(coder decoder: NSCoder) {
-    let backgroundColor = decoder.decodeObjectForKey("backgroundColor") as UIColor!
-    let primaryColor    = decoder.decodeObjectForKey("primaryColor") as UIColor!
-    let secondaryColor  = decoder.decodeObjectForKey("secondaryColor") as UIColor!
-    let detailColor     = decoder.decodeObjectForKey("detailColor") as UIColor!
     
-    self.init(backgroundColor: backgroundColor, primaryColor: primaryColor, secondaryColor: secondaryColor, detailColor: detailColor);
+  required convenience init(coder decoder: NSCoder) {
+    let backgroundColor = decoder.decodeObject(forKey: "backgroundColor") as! UIColor!
+    let primaryColor    = decoder.decodeObject(forKey: "primaryColor") as! UIColor!
+    let secondaryColor  = decoder.decodeObject(forKey: "secondaryColor") as! UIColor!
+    let detailColor     = decoder.decodeObject(forKey: "detailColor") as! UIColor!
+    
+    self.init(backgroundColor: backgroundColor!, primaryColor: primaryColor!, secondaryColor: secondaryColor!, detailColor: detailColor!);
   }
   
-  func encodeWithCoder(coder: NSCoder) {
-    coder.encodeObject(self.backgroundColor, forKey: "backgroundColor")
-    coder.encodeObject(self.primaryColor,    forKey: "primaryColor")
-    coder.encodeObject(self.secondaryColor,  forKey: "secondaryColor")
-    coder.encodeObject(self.detailColor,     forKey: "detailColor")
+  func encode(with coder: NSCoder) {
+    coder.encode(self.backgroundColor, forKey: "backgroundColor")
+    coder.encode(self.primaryColor,    forKey: "primaryColor")
+    coder.encode(self.secondaryColor,  forKey: "secondaryColor")
+    coder.encode(self.detailColor,     forKey: "detailColor")
   }
 }

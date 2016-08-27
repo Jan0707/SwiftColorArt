@@ -42,27 +42,27 @@ class MasterViewController: UITableViewController {
 
   // MARK: - Segues
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showDetail" {
-      if let indexPath = self.tableView.indexPathForSelectedRow() {
+      if let indexPath = self.tableView.indexPathForSelectedRow {
         let example = examples[indexPath.row]
-        (segue.destinationViewController as DetailViewController).detailItem = example
+        (segue.destinationViewController as! DetailViewController).detailItem = example
       }
     }
   }
 
   // MARK: - Table View
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return examples.count
   }
-
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+    
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as UITableViewCell
 
     let example = examples[indexPath.row]
     cell.textLabel!.text = example.title

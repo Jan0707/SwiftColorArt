@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E3324B80A59CD324950190EF07D26CEEF0223D86",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E3324B80A59CD324950190EF07D26CEEF0223D86" : 0,
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A24384A1-D9BB-4C71-BA92-C00A71076373",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E3324B80A59CD324950190EF07D26CEEF0223D86" : "SwiftColorArt",
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53" : "Volumes\/SecureNifty\/github\/CryptoSwift"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftColorArt",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftColorArt.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/krzyzanowskim\/CryptoSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Jan0707\/SwiftColorArt.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E3324B80A59CD324950190EF07D26CEEF0223D86"
+    }
+  ]
+}
